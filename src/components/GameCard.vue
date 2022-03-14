@@ -26,9 +26,9 @@
           v-if="card.urls.length == 1"
           class="mb-n2"
           :src="card.urls[0]"
-          style="max-height: 200px; width: 100%; object-fit: cover"
+          style="max-height: 160px; width: 100%; object-fit: cover"
         ></v-img>
-        <p class="font-weight-bold mx-6 mt-6" style="font-size: 1.3em">
+        <p class="font-weight-bold mx-6 mt-6" style="font-size: 2.3vh">
           {{ card.text }}
         </p>
       </div>
@@ -267,7 +267,7 @@ $fs-card-title: 1.125em;
   pointer-events: none;
   will-change: transform, opacity;
 
-  height: calc(100vh - 170px);
+  height: calc(100vh - 190px);
 
   &.isCurrent {
     pointer-events: auto;
