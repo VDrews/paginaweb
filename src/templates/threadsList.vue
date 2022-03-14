@@ -4,8 +4,7 @@
       class="pa-6"
       :style="{
         position: 'absolute',
-        top: '64px',
-        bottom: '120px',
+        top: '80px',
         width: '100%',
       }"
     >
@@ -38,75 +37,23 @@
         </v-btn>
       </v-layout>
     </div>
-    <Swipeable
-      v-for="(tweet, i) in cards"
-      :key="i"
-      v-on:swipe="onSwipe"
+
+    <GamecardStack
+      :cards="cards"
+      :thread="$page.threadsList"
+      @cardSkipped="removeCardFromDeck"
       :style="{
         position: 'absolute',
-        top: '64px',
+        top: '72px',
         bottom: '120px',
-        width: '100%',
+        left: '12px',
+        right: '12px',
+        width: 'calc(100% - 24px)',
+        height: '100%',
         borderRadius: '8px',
       }"
     >
-      <v-card
-        class="ma-4 pa-0"
-        color="primary"
-        outlined
-        rounded
-        style="
-          height: 100%;
-          -webkit-box-shadow: 10px 10px 0px 0px #000000;
-          box-shadow: 10px 10px 0px 0px #000000;
-        "
-      >
-        <div>
-          <div v-if="i == $page.threadsList.content.length - 1" class="ma-4">
-            <h1>{{ $page.threadsList.title }}</h1>
-            <i>por {{ $page.threadsList.author }} </i>
-          </div>
-          <div v-else>
-            <v-subheader>{{ $page.threadsList.title }}</v-subheader>
-            <v-divider></v-divider>
-          </div>
-          <v-img
-            v-if="tweet.urls.length == 1"
-            class="mb-2"
-            :src="tweet.urls[0]"
-            style="max-height: 200px"
-          ></v-img>
-          <p class="font-weight-bold ma-4" style="font-size: 1.3em">
-            {{ tweet.text }}
-          </p>
-        </div>
-        <v-layout
-          class="pb-2"
-          justify-space-between
-          align-center
-          style="position: absolute; bottom: 0; left: 0; right: 0; width: 100%"
-        >
-          <v-btn
-            fab
-            color="yellow darken-3"
-            outlined
-            :disabled="backhistory.length == 0"
-            @click="goBack"
-          >
-            <v-icon color="black">mdi-chevron-left</v-icon>
-          </v-btn>
-          <v-progress-linear
-            color="black"
-            class="mx-3"
-            :height="10"
-            :value="(position * 100) / ($page.threadsList.content.length - 1)"
-          ></v-progress-linear>
-          <v-btn fab color="yellow darken-3" outlined @click="onSwipe(null)">
-            <v-icon color="black">mdi-chevron-right</v-icon>
-          </v-btn>
-        </v-layout>
-      </v-card>
-    </Swipeable>
+    </GamecardStack>
     <v-layout
       style="position: absolute; bottom: 24px; left: 0; right: 0; width: 100%"
       justify-space-between
@@ -114,13 +61,10 @@
       <v-layout align-center>
         <v-icon>mdi-heart-outline</v-icon>
         <span class="ml-2">
-          {{
-            $page.threadsList.content[$page.threadsList.content.length - 1]
-              .public_metrics.like_count
-          }}
+          {{ $page.threadsList.content[0].public_metrics.like_count }}
         </span>
       </v-layout>
-      <v-btn rounded depressed large color="secundary lighten-5">
+      <v-btn rounded depressed large color="red lighten-5">
         <span class="mr-2 secundary--text text-capitalize">Compartir</span>
         <v-icon color="secundary" size="32">mdi-share-variant</v-icon>
       </v-btn>
@@ -160,10 +104,10 @@ query($id: ID!) {
 </page-query>
 
 <script>
-import { Swipeable } from "vue-swipy";
+import GamecardStack from "@/components/GamecardStack.vue";
 export default {
   components: {
-    Swipeable,
+    GamecardStack,
   },
 
   mounted() {
@@ -173,25 +117,28 @@ export default {
   data() {
     return {
       cards: [],
-      backhistory: [],
-      position: 0,
     };
   },
   methods: {
-    goBack() {
-      this.position -= 1;
-      this.cards.push(this.backhistory.pop());
-    },
-    onSwipe(direction) {
-      console.log(direction);
-      setTimeout(() => {
-        this.backhistory.push(this.cards.pop());
-        this.position += 1;
-      }, 300);
-    },
     share() {
       Navigator.share();
+    },
+    handleCardAccepted() {
+      console.log("handleCardAccepted");
+    },
+    handleCardRejected() {
+      console.log("handleCardRejected");
+    },
+    handleCardSkipped() {
+      console.log("handleCardSkipped");
+    },
+    removeCardFromDeck() {
+      // this.cards.shift();
     },
   },
 };
 </script>
+
+<style lang="scss">
+@import "@/styles/mixins.scss";
+</style>

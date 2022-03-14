@@ -20,7 +20,7 @@ async function getThread(id) {
   }
 
   if (typeof data.includes.tweets !== 'undefined') {
-    return [tweet, ...await getThread(data.includes.tweets[0].id)]
+    return [...await getThread(data.includes.tweets[0].id), tweet]
   } else {
     return [
       tweet
