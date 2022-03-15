@@ -4,7 +4,7 @@
       <div
         class="pa-6"
         :style="{
-          position: 'absolute',
+          position: 'fixed',
           top: '80px',
           width: '100%',
         }"
@@ -64,7 +64,7 @@
         :thread="$page.threadsList"
         @cardSkipped="removeCardFromDeck"
         :style="{
-          position: 'absolute',
+          position: 'fixed',
           top: '80px',
           bottom: '120px',
           left: '12px',

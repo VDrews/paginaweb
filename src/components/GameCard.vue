@@ -302,7 +302,7 @@ $fs-card-title: 1.125em;
   pointer-events: none;
   will-change: transform, opacity;
 
-  height: calc(100vh - 200px);
+  height: 100%;
 
   &.isCurrent {
     pointer-events: auto;
