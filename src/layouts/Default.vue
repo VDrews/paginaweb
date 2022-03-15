@@ -7,6 +7,7 @@
       >
         <v-toolbar flat color="transparent">
           <v-avatar
+            size="40"
             style="border: 3px solid #f0134d"
             @click="$router.push({ path: '/' })"
           >

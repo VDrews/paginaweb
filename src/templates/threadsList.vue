@@ -65,8 +65,8 @@
         @cardSkipped="removeCardFromDeck"
         :style="{
           position: 'fixed',
-          top: '80px',
-          bottom: '120px',
+          top: '56px',
+          bottom: '94px',
           left: '12px',
           right: '12px',
           width: 'calc(100% - 24px)',
@@ -76,7 +76,7 @@
       >
       </GamecardStack>
       <v-layout
-        style="position: fixed; bottom: 24px; left: 0; right: 0; width: 100%"
+        style="position: fixed; bottom: 16px; left: 0; right: 0; width: 100%"
         justify-space-between
       >
         <v-layout align-center>
