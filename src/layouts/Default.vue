@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <v-content>
+    <v-main>
       <header
         class="header mb-0"
-        style="position: absolute; top: 0; left: 0; right: 0"
+        style="position: fixed; top: 0; left: 0; right: 0; z-index: 100"
       >
-        <v-toolbar flat color="white">
+        <v-toolbar flat color="transparent">
           <v-avatar
             style="border: 3px solid #f0134d"
             @click="$router.push({ path: '/' })"
@@ -24,7 +24,7 @@
         </v-toolbar>
       </header>
       <slot />
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -78,8 +78,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
 }
 
 .nav__link {

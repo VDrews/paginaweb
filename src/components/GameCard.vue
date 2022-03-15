@@ -14,7 +14,7 @@
       color="primary"
     >
       <div>
-        <div v-if="swipes == 0 & index == 0" class="ma-6">
+        <div v-if="(swipes == 0) & (index == 0)" class="ma-6">
           <h1>{{ thread.title }}</h1>
           <i>por {{ thread.author }} </i>
         </div>
@@ -23,14 +23,17 @@
           <v-divider></v-divider>
         </div>
         <img
-          v-if="card.urls.length == 1"
+          v-if="card.urls.length > 0"
           class="mb-n2"
           :src="card.urls[0]"
-          style="max-height: 160px; width: 100%; object-fit: cover"
-        ></v-img>
-        <p class="font-weight-bold mx-6 mt-6" style="font-size: 2.3vh">
-          {{ card.text }}
-        </p>
+          style="max-height: 200px; width: 100%; object-fit: cover"
+          @click="image = card.urls[0]"
+        />
+        <div
+          v-html="linkify(card.text)"
+          class="font-weight-bold mx-6 mt-6"
+          style="font-size: 2vh"
+        ></div>
       </div>
       <v-layout
         class="pb-6"
@@ -38,13 +41,7 @@
         align-center
         style="position: absolute; bottom: 0; left: 0; right: 0; width: 100%"
       >
-        <v-btn
-          fab
-          color="yellow darken-3"
-          outlined
-          :disabled="swipes == 0"
-          @click="$emit('back')"
-        >
+        <v-btn icon :disabled="swipes == 0" @click="$emit('back')">
           <v-icon color="black">mdi-chevron-left</v-icon>
         </v-btn>
         <v-progress-linear
@@ -53,16 +50,27 @@
           :height="10"
           :value="(swipes * 100) / (count - 1)"
         ></v-progress-linear>
-        <v-btn
-          fab
-          color="yellow darken-3"
-          outlined
-          @click="playCard('cardAccepted')"
-        >
+        <v-btn icon @click="playCard('cardAccepted')">
           <v-icon color="black">mdi-chevron-right</v-icon>
         </v-btn>
       </v-layout>
     </v-sheet>
+    <v-dialog :value="image" class="pa-12">
+      <img
+        :src="image"
+        style="max-height: 100%; max-width: 100%; object-fit: cover"
+        @click="image = card.urls[0]"
+      />
+      <v-btn
+        fab
+        @click="image = null"
+        dark
+        color="secundary"
+        style="position: absolute; top: 48px; right: 32px"
+      >
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
+    </v-dialog>
   </div>
 </template>
 
@@ -104,6 +112,7 @@ export default {
   data() {
     return {
       isShowing: true,
+      image: null,
       isInteractAnimating: true,
       isInteractDragged: null,
       interactPosition: {
@@ -167,6 +176,32 @@ export default {
   },
 
   methods: {
+    linkify(inputText) {
+      //URLs starting with http://, https://, or ftp://
+      var replacePattern1 =
+        /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+      var replacedText = inputText.replace(
+        replacePattern1,
+        '<a href="$1" target="_blank">$1</a>'
+      );
+
+      //URLs starting with www. (without // before it, or it'd re-link the ones done above)
+      var replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+      var replacedText = replacedText.replace(
+        replacePattern2,
+        '$1<a href="http://$2" target="_blank">$2</a>'
+      );
+
+      //Change email addresses to mailto:: links
+      var replacePattern3 =
+        /(([a-zA-Z0-9_\-\.]+)@[a-zA-Z_]+?(?:\.[a-zA-Z]{2,6}))+/gim;
+      var replacedText = replacedText.replace(
+        replacePattern3,
+        '<a href="mailto:$1">$1</a>'
+      );
+
+      return replacedText.replace(/\n/g, "<br />");
+    },
     hideCard() {
       setTimeout(() => {
         this.isShowing = false;
@@ -232,7 +267,7 @@ export default {
 $cardsTotal: 3;
 $cardsWidth: 300px;
 $cardsPositionOffset: 55vh * 0.06;
-$cardsScaleOffset: 0.04;
+$cardsScaleOffset: 0.05;
 $defaultTranslation: $cardsPositionOffset * $cardsTotal;
 $defaultScale: 1 - ($cardsScaleOffset * $cardsTotal);
 $fs-card-title: 1.125em;
@@ -267,7 +302,7 @@ $fs-card-title: 1.125em;
   pointer-events: none;
   will-change: transform, opacity;
 
-  height: calc(100vh - 190px);
+  height: calc(100vh - 200px);
 
   &.isCurrent {
     pointer-events: auto;
