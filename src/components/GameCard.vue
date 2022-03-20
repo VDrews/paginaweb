@@ -82,6 +82,7 @@ import interact from "interact.js";
 const ACCEPT_CARD = "cardAccepted";
 const REJECT_CARD = "cardRejected";
 const SKIP_CARD = "cardSkipped";
+let numCards = 0;
 
 export default {
   static: {
@@ -140,7 +141,8 @@ export default {
   },
 
   mounted() {
-    this.elementNumber = this.index;
+    this.elementNumber = numCards;
+    numCards += 1;
     const element = this.$refs.interactElement;
 
     interact(element).draggable({
@@ -175,11 +177,13 @@ export default {
       },
     });
 
-    interact("#nextbutton" + this.index).on("tap", () =>
+    interact("#nextbutton" + this.elementNumber).on("tap", () =>
       this.playCard("cardAccepted")
     );
-    interact("#backbutton" + this.index).on("tap", () => this.$emit("back"));
-    interact("#image" + this.index).on(
+    interact("#backbutton" + this.elementNumber).on("tap", () => {
+      if (this.swipes != 0) this.$emit("back");
+    });
+    interact("#image" + this.elementNumber).on(
       "tap",
       (ev) => (this.image = ev.currentTarget.src)
     );
