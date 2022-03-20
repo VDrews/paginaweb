@@ -27,7 +27,7 @@
           class="mb-n2"
           :src="card.urls[0]"
           style="max-height: 200px; width: 100%; object-fit: cover"
-          @click="image = card.urls[0]"
+          :id="'image' + elementNumber"
         />
         <div
           v-html="linkify(card.text)"
@@ -41,25 +41,28 @@
         align-center
         style="position: absolute; bottom: 0; left: 0; right: 0; width: 100%"
       >
-        <v-btn icon :disabled="swipes == 0" @click="$emit('back')">
-          <v-icon color="black">mdi-chevron-left</v-icon>
-        </v-btn>
+        <div :id="'backbutton' + elementNumber">
+          <v-btn icon :disabled="swipes == 0">
+            <v-icon color="black">mdi-chevron-left</v-icon>
+          </v-btn>
+        </div>
         <v-progress-linear
           color="black"
           class="mx-3"
           :height="10"
           :value="(swipes * 100) / (count - 1)"
         ></v-progress-linear>
-        <v-btn icon @click="playCard('cardAccepted')">
-          <v-icon color="black">mdi-chevron-right</v-icon>
-        </v-btn>
+        <div :id="'nextbutton' + elementNumber">
+          <v-btn icon>
+            <v-icon color="black">mdi-chevron-right</v-icon>
+          </v-btn>
+        </div>
       </v-layout>
     </v-sheet>
     <v-dialog :value="image" class="pa-12">
       <img
         :src="image"
         style="max-height: 100%; max-width: 100%; object-fit: cover"
-        @click="image = card.urls[0]"
       />
       <v-btn
         fab
@@ -113,6 +116,7 @@ export default {
     return {
       isShowing: true,
       image: null,
+      elementNumber: null,
       isInteractAnimating: true,
       isInteractDragged: null,
       interactPosition: {
@@ -136,6 +140,7 @@ export default {
   },
 
   mounted() {
+    this.elementNumber = this.index;
     const element = this.$refs.interactElement;
 
     interact(element).draggable({
@@ -169,6 +174,15 @@ export default {
         else this.resetCardPosition();
       },
     });
+
+    interact("#nextbutton" + this.index).on("tap", () =>
+      this.playCard("cardAccepted")
+    );
+    interact("#backbutton" + this.index).on("tap", () => this.$emit("back"));
+    interact("#image" + this.index).on(
+      "tap",
+      (ev) => (this.image = ev.currentTarget.src)
+    );
   },
 
   beforeDestroy() {

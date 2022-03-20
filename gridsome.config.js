@@ -7,7 +7,6 @@
 module.exports = {
   siteName: 'Andriu Garcia',
   plugins: [],
-  icon: './src/favicon.ico',
   templates: {
     threadsList: [
       {

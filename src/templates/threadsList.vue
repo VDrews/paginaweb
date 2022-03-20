@@ -179,7 +179,7 @@
             @click="$router.push({ path: '/blog/' + edge.node.id })"
           >
             <h3 class="my-1">{{ edge.node.title }}</h3>
-            <p>{{ edge.node.content[edge.node.content.length - 1].text }}</p>
+            <p>{{ edge.node.content[0].text }}</p>
             <v-layout class="px-0" justify-space-between>
               <span> {{ edge.node.content.length }} Tarjetas </span>
               <i> por {{ edge.node.author }} </i>
