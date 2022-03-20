@@ -22,13 +22,15 @@
           <v-subheader>{{ thread.title }}</v-subheader>
           <v-divider></v-divider>
         </div>
-        <img
-          v-if="card.urls.length > 0"
-          class="mb-n2"
-          :src="card.urls[0]"
-          style="max-height: 200px; width: 100%; object-fit: cover"
-          :id="'image' + elementNumber"
-        />
+        <v-sheet color="grey darken-3">
+          <img
+            v-if="card.urls.length > 0"
+            class="mb-n2"
+            :src="card.urls[0]"
+            style="max-height: 200px; width: 100%; object-fit: contain"
+            :id="'image' + elementNumber"
+          />
+        </v-sheet>
         <div
           v-html="linkify(card.text)"
           class="font-weight-bold mx-6 mt-6"
