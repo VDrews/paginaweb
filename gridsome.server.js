@@ -48,6 +48,11 @@ module.exports = function (api) {
 
     const tweets = [
       {
+        id: '1506287844402376709',
+        title: 'Creando un lector de noticias usando Twitter como CMS',
+        author: 'Andriu Garcia'
+      },
+      {
         id: '1364649798717087750',
         title: 'Creando una Red Social para el COVID',
         author: 'Andriu Garcia'
