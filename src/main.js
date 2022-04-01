@@ -3,7 +3,6 @@
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import DefaultLayout from '~/layouts/Default.vue'
-import colors from 'vuetify/es5/util/colors';
 
 
 
@@ -16,12 +15,11 @@ export default function (Vue, { appOptions, router, head, isClient }) {
 
   head.link.push({
     rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;500;600;700&display=swap',
-  })
-
+    href: 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900',
+  });
   head.link.push({
     rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900',
+    href: 'https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap',
   });
 
   Vue.use(Vuetify)
@@ -32,6 +30,7 @@ export default function (Vue, { appOptions, router, head, isClient }) {
         light: {
           primary: '#FFC764',
           secundary: '#F0134D',
+          background: '#025275',
           twitter: '#00acee',
           linkedin: '#0e76a8'
         }

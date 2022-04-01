@@ -1,43 +1,25 @@
 const THREE = require("three");
-const GLTFLoader = require("three/examples/jsm/loaders/GLTFLoader.js").GLTFLoader;
-const { loadPhone, load3DModel } = require("@/three/functions")
-
-const addClothing = function (i, cb) {
-
-  switch (i) {
-    case 0:
-      load3DModel("/t-shirt/scene.gltf", 0.25, (tshirt) => {
-        tshirt.visible = false
-        cb(tshirt)
-      })
-      break;
-    case 1:
-      load3DModel("/t-shirt1/scene.gltf", 0.031, (tshirt) => {
-        tshirt.visible = false
-        tshirt.position.y -= 42
-        cb(tshirt)
-      })
-      break;
-    case 2:
-      load3DModel("/standard_t-shirt/scene.gltf", 0.027, (tshirt) => {
-        tshirt.visible = false
-        tshirt.position.y -= 35
-        cb(tshirt)
-      })
-      break;
-    case 3:
-      load3DModel("/polo/scene.gltf", 0.0028, (tshirt) => {
-        tshirt.visible = false
-        tshirt.position.y -= 35
-        cb(tshirt)
-      })
-      break;
-  }
-}
+const { loadPhone, loadImage } = require("@/three/functions")
 
 const loadCarpet = (src, width, height, thick) => {
   const geometry = new THREE.BoxGeometry(width, height, thick);
   const texture = new THREE.TextureLoader().load(src);
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.wrapT = THREE.RepeatWrapping;
+  texture.repeat.set(8, 4);
+  const planeMaterial = new THREE.MeshStandardMaterial({
+    map: texture,
+  });
+
+  const plane = new THREE.Mesh(geometry, planeMaterial);
+  plane.receiveShadow = true;
+
+  return plane
+}
+
+const loadBox = (size) => {
+  const geometry = new THREE.BoxGeometry(size, size, size,);
+  const texture = new THREE.TextureLoader().load("/textures/cardboard.jpeg");
   const planeMaterial = new THREE.MeshStandardMaterial({
     map: texture,
   });
@@ -69,13 +51,12 @@ const load = function (xoffset = 0) {
     })
   );
 
-  const carpet = loadCarpet("/textures/carpet.jpeg", 539, 360, 5)
+  const carpet = loadCarpet("/textures/carpet.jpeg", 550, 400, 5)
   carpet.position.y = 1
   carpet.rotation.x = THREE.MathUtils.degToRad(-90)
 
   carpet.scale.set(0.15, 0.15, 0.15)
   pantala.add(carpet)
-  const loader = new GLTFLoader();
 
   clothings = [new THREE.Group(), new THREE.Group(), new THREE.Group()]
 
@@ -121,48 +102,73 @@ const load = function (xoffset = 0) {
   pantala.add(clothings[1])
   pantala.add(clothings[2])
 
-  let hidedClothing = null
+  let clothes = {}
 
-  addClothing(0, (tshirt) => {
-    clothings[0].add(tshirt)
-    tshirt.visible = true
-  })
-  addClothing(3, (tshirt) => {
-    clothings[0].add(tshirt)
-    hidedClothing = tshirt
-  })
-  addClothing(1, (tshirt) => {
-    clothings[1].add(tshirt)
-    tshirt.visible = true
-  })
-  addClothing(2, (tshirt) => {
-    clothings[2].add(tshirt)
-    tshirt.visible = true
-  })
+  const clothingStack = loadImage("/clothes/clothing-stack.png", 300, 300);
+  clothes.blueDress = loadImage("/clothes/blue-dress.png", 300, 300);
+  clothes.brownJacket = loadImage("/clothes/brown-jacket.png", 300, 300);
+  clothes.greenJacket = loadImage("/clothes/green-jacket.png", 300, 300);
+  clothes.pants = loadImage("/clothes/pants.png", 300, 300);
+  clothes.pinkDress = loadImage("/clothes/pink-dress.png", 300, 300);
+  clothes.pinkDress2 = loadImage("/clothes/pink-dress.png", 300, 300);
+  clothes.purpleTshirt = loadImage("/clothes/purple-tshirt.png", 300, 300);
+  clothes.redDress = loadImage("/clothes/red-dress.png", 300, 300);
+  clothes.yellowTshirt = loadImage("/clothes/yellow-tshirt.png", 300, 300);
 
-  // Añadir prenda a la posicion siguiente
-  // Eliminar prenda de la prenda con la posicion anterior
-  // Visualizar nueva de la posicion anterior
-  // Actualizar posicion
+  for (const key in clothes) {
+    clothes[key].scale.set(0.08, 0.08, 0.08)
+    clothes[key].visible = false
+  }
 
-  let slotPos = 0
-  let clothingPos = 0
+  clothings[0].add(clothes.blueDress)
+  clothings[0].add(clothes.brownJacket)
+  clothings[0].add(clothes.greenJacket)
+  clothings[1].add(clothes.pinkDress2)
+  clothings[1].add(clothes.pants)
+  clothings[1].add(clothes.purpleTshirt)
+  clothings[2].add(clothes.redDress)
+  clothings[2].add(clothes.yellowTshirt)
+  clothings[2].add(clothes.pinkDress)
 
+  pantala.add(clothingStack)
+  clothingStack.scale.set(0.04, 0.04, 0.04)
+  clothingStack.position.y = 10
+  clothingStack.position.x = -22
+  clothingStack.position.z = 5
+  clothingStack.rotation.y = THREE.MathUtils.degToRad(-45)
+
+  const box_tower = new THREE.Group();
+  const boxes = [loadBox(8), loadBox(8), loadBox(8)]
+  box_tower.position.y += 15
+  box_tower.position.z -= 2
+  box_tower.position.x += 5.5
+
+  box_tower.add(boxes[0])
+  box_tower.add(boxes[1])
+  box_tower.add(boxes[2])
+
+  pantala.add(box_tower)
+  boxes[0].rotation.y = THREE.MathUtils.degToRad(-45)
+  boxes[1].position.y += 8
+  boxes[1].position.x += 1
+  boxes[1].position.z += 1
+  boxes[2].rotation.y = THREE.MathUtils.degToRad(-25)
+  boxes[2].position.y += 16
+  boxes[2].position.x -= 1
+  boxes[2].position.z -= 1
+
+  let i = 0
   setInterval(() => {
+    const nextPos = (i + 1) % 3
+    clothings[0].children[i].visible = false
+    clothings[0].children[nextPos].visible = true
+    clothings[1].children[i].visible = false
+    clothings[1].children[nextPos].visible = true
+    clothings[2].children[i].visible = false
+    clothings[2].children[nextPos].visible = true
 
-    const nextPos = (slotPos + 1) % 3
-
-    addClothing(clothingPos, (tshirt) => {
-      clothings[nextPos].add(tshirt)
-      clothings[slotPos].remove(clothings[slotPos].children[0])
-      hidedClothing.visible = true
-      hidedClothing = tshirt
-      slotPos = nextPos
-      clothingPos = (clothingPos + 1) % 4
-    })
-
-
-  }, 4000)
+    i = nextPos
+  }, 2000)
 
   return pantala
 }

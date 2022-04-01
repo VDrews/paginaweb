@@ -43,7 +43,21 @@ const updateAspectRatio = function () {
 }
 
 const moveCamera = function () {
-  const t = document.getElementsByClassName("scroller")[0].scrollTop;
+  function getOffset(el) {
+    const rect = el.getBoundingClientRect();
+    return {
+      top: rect.top + document.getElementById("main").scrollTop
+    };
+  }
+
+  let t = 0
+  const startCanvas = document.getElementById("startCanvas")
+
+  const top = getOffset(startCanvas).top
+
+  if (document.getElementById("main").scrollTop > top) {
+    t = document.getElementById("main").scrollTop - top;
+  }
 
   // camera.position.z = t * -0.01;
   // console.log(t * -0.2);

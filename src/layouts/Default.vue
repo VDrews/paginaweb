@@ -16,11 +16,22 @@
             ></v-img>
           </v-avatar>
           <v-spacer></v-spacer>
+          <v-btn icon large @click="openEmail">
+            <v-icon>mdi-email</v-icon>
+          </v-btn>
           <v-btn icon large @click="openTwitter">
             <v-icon>mdi-twitter</v-icon>
           </v-btn>
           <v-btn icon large @click="openLinkedin">
             <v-icon>mdi-linkedin</v-icon>
+          </v-btn>
+          <v-btn
+            outlined
+            small
+            @click="downloadResumeFullstack"
+            class="mono ml-3"
+          >
+            Resume
           </v-btn>
         </v-toolbar>
       </header>
@@ -40,6 +51,10 @@ query {
 <script>
 export default {
   methods: {
+    openEmail() {
+      window.open("mailto:contacto@andriugarcia.com");
+    },
+
     openTwitter() {
       window.open("https://twitter.com/Versymattic");
     },
@@ -47,25 +62,61 @@ export default {
     openLinkedin() {
       window.open("https://www.linkedin.com/in/andriugarcia/");
     },
+    downloadResumeFullstack() {
+      window.open("/AndriuGarcia-WebDeveloperResume.pdf");
+    },
+    downloadResumeProductManager() {
+      window.open("/ResumeAndriuGarcia-ProductManager.pdf");
+    },
   },
 };
 </script>
 
 <style>
+@font-face {
+  font-family: "Calibre";
+  src: local("Calibre"),
+    url("../styles/font/CalibreThin.otf") format("truetype");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Calibre";
+  src: local("Calibre"),
+    url("../styles/font/CalibreRegular.otf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Calibre";
+  src: local("Calibre"),
+    url("../styles/font/CalibreMedium.otf") format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Calibre";
+  src: local("Calibre"),
+    url("../styles/font/CalibreBold.otf") format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Calibre";
+  src: local("Calibre"),
+    url("../styles/font/CalibreBlack.otf") format("truetype");
+  font-weight: 800;
+}
 body {
-  font-family: "Josefin Sans" -apple-system, system-ui, BlinkMacSystemFont,
+  font-family: "Calibre" -apple-system, system-ui, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
   margin: 0;
   padding: 0;
-  line-height: 1.5;
 }
 
 .v-application {
-  font-family: "Josefin Sans", sans-serif !important;
+  font-family: "Calibre", sans-serif !important;
+  font-weight: light;
 }
 
 .v-application .title {
-  font-family: "Josefin Sans", sans-serif !important;
+  font-family: "Calibre", sans-serif !important;
 }
 
 .layout {
