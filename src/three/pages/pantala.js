@@ -44,11 +44,11 @@ const load = function (xoffset = 0) {
   pantala.position.x = xoffset
 
   pantala.add(
-    loadPhone("/olimaps.png", 20, 35, 2, 0x1c1c1c, {
+    loadPhone("videoPantala", 20, 35, 2, 0x1c1c1c, {
       x: -10,
       y: 23.5,
       z: -3,
-    })
+    }, true)
   );
 
   const carpet = loadCarpet("/textures/carpet.jpeg", 550, 400, 5)

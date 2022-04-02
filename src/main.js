@@ -8,6 +8,9 @@ import DefaultLayout from '~/layouts/Default.vue'
 
 export default function (Vue, { appOptions, router, head, isClient }) {
 
+  appOptions.i18n.setLocaleMessage('es-es', require('./locales/es-es.json'))
+  appOptions.i18n.setLocaleMessage('en-en', require('./locales/en-en.json'))
+
   head.link.push({
     rel: 'stylesheet',
     href: 'https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css',

@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Posts - Andriu Garcia</title><meta name="gridsome:hash" content="35c92e547f0dc1da125850af307364a2e73ee34d"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.22"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.4c15c93523fcbd3ce4f0b755ca83019d.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.4c15c93523fcbd3ce4f0b755ca83019d.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.4c15c93523fcbd3ce4f0b755ca83019d.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.4c15c93523fcbd3ce4f0b755ca83019d.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="152x152" href="/assets/static/favicon.62d22cb.4c15c93523fcbd3ce4f0b755ca83019d.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/static/favicon.1539b60.4c15c93523fcbd3ce4f0b755ca83019d.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="167x167" href="/assets/static/favicon.dc0cdc5.4c15c93523fcbd3ce4f0b755ca83019d.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/static/favicon.7b22250.4c15c93523fcbd3ce4f0b755ca83019d.png"><link data-vue-tag="ssr" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"><link data-vue-tag="ssr" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"><link data-vue-tag="ssr" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cutive+Mono&amp;display=swap"><link rel="preload" href="/assets/css/0.styles.b6addf1c.css" as="style"><link rel="preload" href="/assets/js/app.50b7f317.js" as="script"><link rel="preload" href="/assets/js/page--src--pages--index-vue.667c9afb.js" as="script"><link rel="prefetch" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.8698efc4.js"><link rel="prefetch" href="/assets/js/page--src--pages--about-vue.dd1ff1af.js"><link rel="prefetch" href="/assets/js/page--src--templates--threads-list-vue.f5dc0c1f.js"><link rel="prefetch" href="/assets/js/vendors~page--src--pages--index-vue.f6271030.js"><link rel="prefetch" href="/assets/js/vendors~page--src--templates--threads-list-vue.4d7c967c.js"><link rel="stylesheet" href="/assets/css/0.styles.b6addf1c.css"><style data-vue-tag="vuetify" type="text/css" id="vuetify-theme-stylesheet" nonce="undefined">.v-application a { color: #ffc764; }
+.v-application .primary {
+  background-color: #ffc764 !important;
+  border-color: #ffc764 !important;
+}
+.v-application .primary--text {
+  color: #ffc764 !important;
+  caret-color: #ffc764 !important;
+}
+.v-application .primary.lighten-5 {
+  background-color: #ffffee !important;
+  border-color: #ffffee !important;
+}
+.v-application .primary--text.text--lighten-5 {
+  color: #ffffee !important;
+  caret-color: #ffffee !important;
+}
+.v-application .primary.lighten-4 {
+  background-color: #ffffd2 !important;
+  border-color: #ffffd2 !important;
+}
+.v-application .primary--text.text--lighten-4 {
+  color: #ffffd2 !important;
+  caret-color: #ffffd2 !important;
+}
+.v-application .primary.lighten-3 {
+  background-color: #ffffb5 !important;
+  border-color: #ffffb5 !important;
+}
+.v-application .primary--text.text--lighten-3 {
+  color: #ffffb5 !important;
+  caret-color: #ffffb5 !important;
+}
+.v-application .primary.lighten-2 {
+  background-color: #ffff9a !important;
+  border-color: #ffff9a !important;
+}
+.v-application .primary--text.text--lighten-2 {
+  color: #ffff9a !important;
+  caret-color: #ffff9a !important;
+}
+.v-application .primary.lighten-1 {
+  background-color: #ffe37f !important;
+  border-color: #ffe37f !important;
+}
+.v-application .primary--text.text--lighten-1 {
+  color: #ffe37f !important;
+  caret-color: #ffe37f !important;
+}
+.v-application .primary.darken-1 {
+  background-color: #e1ac4a !important;
+  border-color: #e1ac4a !important;
+}
+.v-application .primary--text.text--darken-1 {
+  color: #e1ac4a !important;
+  caret-color: #e1ac4a !important;
+}
+.v-application .primary.darken-2 {
+  background-color: #c3912f !important;
+  border-color: #c3912f !important;
+}
+.v-application .primary--text.text--darken-2 {
+  color: #c3912f !important;
+  caret-color: #c3912f !important;
+}
+.v-application .primary.darken-3 {
+  background-color: #a57811 !important;
+  border-color: #a57811 !important;
+}
+.v-application .primary--text.text--darken-3 {
+  color: #a57811 !important;
+  caret-color: #a57811 !important;
+}
+.v-application .primary.darken-4 {
+  background-color: #895f00 !important;
+  border-color: #895f00 !important;
+}
+.v-application .primary--text.text--darken-4 {
+  color: #895f00 !important;
+  caret-color: #895f00 !important;
+}
+.v-application .secondary {
+  background-color: #424242 !important;
+  border-color: #424242 !important;
+}
+.v-application .secondary--text {
+  color: #424242 !important;
+  caret-color: #424242 !important;
+}
+.v-application .secondary.lighten-5 {
+  background-color: #c1c1c1 !important;
+  border-color: #c1c1c1 !important;
+}
+.v-application .secondary--text.text--lighten-5 {
+  color: #c1c1c1 !important;
+  caret-color: #c1c1c1 !important;
+}
+.v-application .secondary.lighten-4 {
+  background-color: #a6a6a6 !important;
+  border-color: #a6a6a6 !important;
+}
+.v-application .secondary--text.text--lighten-4 {
+  color: #a6a6a6 !important;
+  caret-color: #a6a6a6 !important;
+}
+.v-application .secondary.lighten-3 {
+  background-color: #8b8b8b !important;
+  border-color: #8b8b8b !important;
+}
+.v-application .secondary--text.text--lighten-3 {
+  color: #8b8b8b !important;
+  caret-color: #8b8b8b !important;
+}
+.v-application .secondary.lighten-2 {
+  background-color: #727272 !important;
+  border-color: #727272 !important;
+}
+.v-application .secondary--text.text--lighten-2 {
+  color: #727272 !important;
+  caret-color: #727272 !important;
+}
+.v-application .secondary.lighten-1 {
+  background-color: #595959 !important;
+  border-color: #595959 !important;
+}
+.v-application .secondary--text.text--lighten-1 {
+  color: #595959 !important;
+  caret-color: #595959 !important;
+}
+.v-application .secondary.darken-1 {
+  background-color: #2c2c2c !important;
+  border-color: #2c2c2c !important;
+}
+.v-application .secondary--text.text--darken-1 {
+  color: #2c2c2c !important;
+  caret-color: #2c2c2c !important;
+}
+.v-application .secondary.darken-2 {
+  background-color: #171717 !important;
+  border-color: #171717 !important;
+}
+.v-application .secondary--text.text--darken-2 {
+  color: #171717 !important;
+  caret-color: #171717 !important;
+}
+.v-application .secondary.darken-3 {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+.v-application .secondary--text.text--darken-3 {
+  color: #000000 !important;
+  caret-color: #000000 !important;
+}
+.v-application .secondary.darken-4 {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+.v-application .secondary--text.text--darken-4 {
+  color: #000000 !important;
+  caret-color: #000000 !important;
+}
+.v-application .accent {
+  background-color: #82b1ff !important;
+  border-color: #82b1ff !important;
+}
+.v-application .accent--text {
+  color: #82b1ff !important;
+  caret-color: #82b1ff !important;
+}
+.v-application .accent.lighten-5 {
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+.v-application .accent--text.text--lighten-5 {
+  color: #ffffff !important;
+  caret-color: #ffffff !important;
+}
+.v-application .accent.lighten-4 {
+  background-color: #f8ffff !important;
+  border-color: #f8ffff !important;
+}
+.v-application .accent--text.text--lighten-4 {
+  color: #f8ffff !important;
+  caret-color: #f8ffff !important;
+}
+.v-application .accent.lighten-3 {
+  background-color: #daffff !important;
+  border-color: #daffff !important;
+}
+.v-application .accent--text.text--lighten-3 {
+  color: #daffff !important;
+  caret-color: #daffff !important;
+}
+.v-application .accent.lighten-2 {
+  background-color: #bce8ff !important;
+  border-color: #bce8ff !important;
+}
+.v-application .accent--text.text--lighten-2 {
+  color: #bce8ff !important;
+  caret-color: #bce8ff !important;
+}
+.v-application .accent.lighten-1 {
+  background-color: #9fccff !important;
+  border-color: #9fccff !important;
+}
+.v-application .accent--text.text--lighten-1 {
+  color: #9fccff !important;
+  caret-color: #9fccff !important;
+}
+.v-application .accent.darken-1 {
+  background-color: #6596e2 !important;
+  border-color: #6596e2 !important;
+}
+.v-application .accent--text.text--darken-1 {
+  color: #6596e2 !important;
+  caret-color: #6596e2 !important;
+}
+.v-application .accent.darken-2 {
+  background-color: #467dc6 !important;
+  border-color: #467dc6 !important;
+}
+.v-application .accent--text.text--darken-2 {
+  color: #467dc6 !important;
+  caret-color: #467dc6 !important;
+}
+.v-application .accent.darken-3 {
+  background-color: #2364aa !important;
+  border-color: #2364aa !important;
+}
+.v-application .accent--text.text--darken-3 {
+  color: #2364aa !important;
+  caret-color: #2364aa !important;
+}
+.v-application .accent.darken-4 {
+  background-color: #004c90 !important;
+  border-color: #004c90 !important;
+}
+.v-application .accent--text.text--darken-4 {
+  color: #004c90 !important;
+  caret-color: #004c90 !important;
+}
+.v-application .error {
+  background-color: #ff5252 !important;
+  border-color: #ff5252 !important;
+}
+.v-application .error--text {
+  color: #ff5252 !important;
+  caret-color: #ff5252 !important;
+}
+.v-application .error.lighten-5 {
+  background-color: #ffe4d5 !important;
+  border-color: #ffe4d5 !important;
+}
+.v-application .error--text.text--lighten-5 {
+  color: #ffe4d5 !important;
+  caret-color: #ffe4d5 !important;
+}
+.v-application .error.lighten-4 {
+  background-color: #ffc6b9 !important;
+  border-color: #ffc6b9 !important;
+}
+.v-application .error--text.text--lighten-4 {
+  color: #ffc6b9 !important;
+  caret-color: #ffc6b9 !important;
+}
+.v-application .error.lighten-3 {
+  background-color: #ffa99e !important;
+  border-color: #ffa99e !important;
+}
+.v-application .error--text.text--lighten-3 {
+  color: #ffa99e !important;
+  caret-color: #ffa99e !important;
+}
+.v-application .error.lighten-2 {
+  background-color: #ff8c84 !important;
+  border-color: #ff8c84 !important;
+}
+.v-application .error--text.text--lighten-2 {
+  color: #ff8c84 !important;
+  caret-color: #ff8c84 !important;
+}
+.v-application .error.lighten-1 {
+  background-color: #ff6f6a !important;
+  border-color: #ff6f6a !important;
+}
+.v-application .error--text.text--lighten-1 {
+  color: #ff6f6a !important;
+  caret-color: #ff6f6a !important;
+}
+.v-application .error.darken-1 {
+  background-color: #df323b !important;
+  border-color: #df323b !important;
+}
+.v-application .error--text.text--darken-1 {
+  color: #df323b !important;
+  caret-color: #df323b !important;
+}
+.v-application .error.darken-2 {
+  background-color: #bf0025 !important;
+  border-color: #bf0025 !important;
+}
+.v-application .error--text.text--darken-2 {
+  color: #bf0025 !important;
+  caret-color: #bf0025 !important;
+}
+.v-application .error.darken-3 {
+  background-color: #9f0010 !important;
+  border-color: #9f0010 !important;
+}
+.v-application .error--text.text--darken-3 {
+  color: #9f0010 !important;
+  caret-color: #9f0010 !important;
+}
+.v-application .error.darken-4 {
+  background-color: #800000 !important;
+  border-color: #800000 !important;
+}
+.v-application .error--text.text--darken-4 {
+  color: #800000 !important;
+  caret-color: #800000 !important;
+}
+.v-application .info {
+  background-color: #2196f3 !important;
+  border-color: #2196f3 !important;
+}
+.v-application .info--text {
+  color: #2196f3 !important;
+  caret-color: #2196f3 !important;
+}
+.v-application .info.lighten-5 {
+  background-color: #d4ffff !important;
+  border-color: #d4ffff !important;
+}
+.v-application .info--text.text--lighten-5 {
+  color: #d4ffff !important;
+  caret-color: #d4ffff !important;
+}
+.v-application .info.lighten-4 {
+  background-color: #b5ffff !important;
+  border-color: #b5ffff !important;
+}
+.v-application .info--text.text--lighten-4 {
+  color: #b5ffff !important;
+  caret-color: #b5ffff !important;
+}
+.v-application .info.lighten-3 {
+  background-color: #95e8ff !important;
+  border-color: #95e8ff !important;
+}
+.v-application .info--text.text--lighten-3 {
+  color: #95e8ff !important;
+  caret-color: #95e8ff !important;
+}
+.v-application .info.lighten-2 {
+  background-color: #75ccff !important;
+  border-color: #75ccff !important;
+}
+.v-application .info--text.text--lighten-2 {
+  color: #75ccff !important;
+  caret-color: #75ccff !important;
+}
+.v-application .info.lighten-1 {
+  background-color: #51b0ff !important;
+  border-color: #51b0ff !important;
+}
+.v-application .info--text.text--lighten-1 {
+  color: #51b0ff !important;
+  caret-color: #51b0ff !important;
+}
+.v-application .info.darken-1 {
+  background-color: #007cd6 !important;
+  border-color: #007cd6 !important;
+}
+.v-application .info--text.text--darken-1 {
+  color: #007cd6 !important;
+  caret-color: #007cd6 !important;
+}
+.v-application .info.darken-2 {
+  background-color: #0064ba !important;
+  border-color: #0064ba !important;
+}
+.v-application .info--text.text--darken-2 {
+  color: #0064ba !important;
+  caret-color: #0064ba !important;
+}
+.v-application .info.darken-3 {
+  background-color: #004d9f !important;
+  border-color: #004d9f !important;
+}
+.v-application .info--text.text--darken-3 {
+  color: #004d9f !important;
+  caret-color: #004d9f !important;
+}
+.v-application .info.darken-4 {
+  background-color: #003784 !important;
+  border-color: #003784 !important;
+}
+.v-application .info--text.text--darken-4 {
+  color: #003784 !important;
+  caret-color: #003784 !important;
+}
+.v-application .success {
+  background-color: #4caf50 !important;
+  border-color: #4caf50 !important;
+}
+.v-application .success--text {
+  color: #4caf50 !important;
+  caret-color: #4caf50 !important;
+}
+.v-application .success.lighten-5 {
+  background-color: #dcffd6 !important;
+  border-color: #dcffd6 !important;
+}
+.v-application .success--text.text--lighten-5 {
+  color: #dcffd6 !important;
+  caret-color: #dcffd6 !important;
+}
+.v-application .success.lighten-4 {
+  background-color: #beffba !important;
+  border-color: #beffba !important;
+}
+.v-application .success--text.text--lighten-4 {
+  color: #beffba !important;
+  caret-color: #beffba !important;
+}
+.v-application .success.lighten-3 {
+  background-color: #a2ff9e !important;
+  border-color: #a2ff9e !important;
+}
+.v-application .success--text.text--lighten-3 {
+  color: #a2ff9e !important;
+  caret-color: #a2ff9e !important;
+}
+.v-application .success.lighten-2 {
+  background-color: #85e783 !important;
+  border-color: #85e783 !important;
+}
+.v-application .success--text.text--lighten-2 {
+  color: #85e783 !important;
+  caret-color: #85e783 !important;
+}
+.v-application .success.lighten-1 {
+  background-color: #69cb69 !important;
+  border-color: #69cb69 !important;
+}
+.v-application .success--text.text--lighten-1 {
+  color: #69cb69 !important;
+  caret-color: #69cb69 !important;
+}
+.v-application .success.darken-1 {
+  background-color: #2d9437 !important;
+  border-color: #2d9437 !important;
+}
+.v-application .success--text.text--darken-1 {
+  color: #2d9437 !important;
+  caret-color: #2d9437 !important;
+}
+.v-application .success.darken-2 {
+  background-color: #00791e !important;
+  border-color: #00791e !important;
+}
+.v-application .success--text.text--darken-2 {
+  color: #00791e !important;
+  caret-color: #00791e !important;
+}
+.v-application .success.darken-3 {
+  background-color: #006000 !important;
+  border-color: #006000 !important;
+}
+.v-application .success--text.text--darken-3 {
+  color: #006000 !important;
+  caret-color: #006000 !important;
+}
+.v-application .success.darken-4 {
+  background-color: #004700 !important;
+  border-color: #004700 !important;
+}
+.v-application .success--text.text--darken-4 {
+  color: #004700 !important;
+  caret-color: #004700 !important;
+}
+.v-application .warning {
+  background-color: #fb8c00 !important;
+  border-color: #fb8c00 !important;
+}
+.v-application .warning--text {
+  color: #fb8c00 !important;
+  caret-color: #fb8c00 !important;
+}
+.v-application .warning.lighten-5 {
+  background-color: #ffff9e !important;
+  border-color: #ffff9e !important;
+}
+.v-application .warning--text.text--lighten-5 {
+  color: #ffff9e !important;
+  caret-color: #ffff9e !important;
+}
+.v-application .warning.lighten-4 {
+  background-color: #fffb82 !important;
+  border-color: #fffb82 !important;
+}
+.v-application .warning--text.text--lighten-4 {
+  color: #fffb82 !important;
+  caret-color: #fffb82 !important;
+}
+.v-application .warning.lighten-3 {
+  background-color: #ffdf67 !important;
+  border-color: #ffdf67 !important;
+}
+.v-application .warning--text.text--lighten-3 {
+  color: #ffdf67 !important;
+  caret-color: #ffdf67 !important;
+}
+.v-application .warning.lighten-2 {
+  background-color: #ffc24b !important;
+  border-color: #ffc24b !important;
+}
+.v-application .warning--text.text--lighten-2 {
+  color: #ffc24b !important;
+  caret-color: #ffc24b !important;
+}
+.v-application .warning.lighten-1 {
+  background-color: #ffa72d !important;
+  border-color: #ffa72d !important;
+}
+.v-application .warning--text.text--lighten-1 {
+  color: #ffa72d !important;
+  caret-color: #ffa72d !important;
+}
+.v-application .warning.darken-1 {
+  background-color: #db7200 !important;
+  border-color: #db7200 !important;
+}
+.v-application .warning--text.text--darken-1 {
+  color: #db7200 !important;
+  caret-color: #db7200 !important;
+}
+.v-application .warning.darken-2 {
+  background-color: #bb5900 !important;
+  border-color: #bb5900 !important;
+}
+.v-application .warning--text.text--darken-2 {
+  color: #bb5900 !important;
+  caret-color: #bb5900 !important;
+}
+.v-application .warning.darken-3 {
+  background-color: #9d4000 !important;
+  border-color: #9d4000 !important;
+}
+.v-application .warning--text.text--darken-3 {
+  color: #9d4000 !important;
+  caret-color: #9d4000 !important;
+}
+.v-application .warning.darken-4 {
+  background-color: #802700 !important;
+  border-color: #802700 !important;
+}
+.v-application .warning--text.text--darken-4 {
+  color: #802700 !important;
+  caret-color: #802700 !important;
+}
+.v-application .secundary {
+  background-color: #f0134d !important;
+  border-color: #f0134d !important;
+}
+.v-application .secundary--text {
+  color: #f0134d !important;
+  caret-color: #f0134d !important;
+}
+.v-application .secundary.lighten-5 {
+  background-color: #ffbece !important;
+  border-color: #ffbece !important;
+}
+.v-application .secundary--text.text--lighten-5 {
+  color: #ffbece !important;
+  caret-color: #ffbece !important;
+}
+.v-application .secundary.lighten-4 {
+  background-color: #ffa0b2 !important;
+  border-color: #ffa0b2 !important;
+}
+.v-application .secundary--text.text--lighten-4 {
+  color: #ffa0b2 !important;
+  caret-color: #ffa0b2 !important;
+}
+.v-application .secundary.lighten-3 {
+  background-color: #ff8297 !important;
+  border-color: #ff8297 !important;
+}
+.v-application .secundary--text.text--lighten-3 {
+  color: #ff8297 !important;
+  caret-color: #ff8297 !important;
+}
+.v-application .secundary.lighten-2 {
+  background-color: #ff637e !important;
+  border-color: #ff637e !important;
+}
+.v-application .secundary--text.text--lighten-2 {
+  color: #ff637e !important;
+  caret-color: #ff637e !important;
+}
+.v-application .secundary.lighten-1 {
+  background-color: #ff4265 !important;
+  border-color: #ff4265 !important;
+}
+.v-application .secundary--text.text--lighten-1 {
+  color: #ff4265 !important;
+  caret-color: #ff4265 !important;
+}
+.v-application .secundary.darken-1 {
+  background-color: #d00037 !important;
+  border-color: #d00037 !important;
+}
+.v-application .secundary--text.text--darken-1 {
+  color: #d00037 !important;
+  caret-color: #d00037 !important;
+}
+.v-application .secundary.darken-2 {
+  background-color: #af0022 !important;
+  border-color: #af0022 !important;
+}
+.v-application .secundary--text.text--darken-2 {
+  color: #af0022 !important;
+  caret-color: #af0022 !important;
+}
+.v-application .secundary.darken-3 {
+  background-color: #8f000e !important;
+  border-color: #8f000e !important;
+}
+.v-application .secundary--text.text--darken-3 {
+  color: #8f000e !important;
+  caret-color: #8f000e !important;
+}
+.v-application .secundary.darken-4 {
+  background-color: #710000 !important;
+  border-color: #710000 !important;
+}
+.v-application .secundary--text.text--darken-4 {
+  color: #710000 !important;
+  caret-color: #710000 !important;
+}
+.v-application .background {
+  background-color: #025275 !important;
+  border-color: #025275 !important;
+}
+.v-application .background--text {
+  color: #025275 !important;
+  caret-color: #025275 !important;
+}
+.v-application .background.lighten-5 {
+  background-color: #9dd4fd !important;
+  border-color: #9dd4fd !important;
+}
+.v-application .background--text.text--lighten-5 {
+  color: #9dd4fd !important;
+  caret-color: #9dd4fd !important;
+}
+.v-application .background.lighten-4 {
+  background-color: #82b8e1 !important;
+  border-color: #82b8e1 !important;
+}
+.v-application .background--text.text--lighten-4 {
+  color: #82b8e1 !important;
+  caret-color: #82b8e1 !important;
+}
+.v-application .background.lighten-3 {
+  background-color: #669dc5 !important;
+  border-color: #669dc5 !important;
+}
+.v-application .background--text.text--lighten-3 {
+  color: #669dc5 !important;
+  caret-color: #669dc5 !important;
+}
+.v-application .background.lighten-2 {
+  background-color: #4a83a9 !important;
+  border-color: #4a83a9 !important;
+}
+.v-application .background--text.text--lighten-2 {
+  color: #4a83a9 !important;
+  caret-color: #4a83a9 !important;
+}
+.v-application .background.lighten-1 {
+  background-color: #2d6a8f !important;
+  border-color: #2d6a8f !important;
+}
+.v-application .background--text.text--lighten-1 {
+  color: #2d6a8f !important;
+  caret-color: #2d6a8f !important;
+}
+.v-application .background.darken-1 {
+  background-color: #003b5c !important;
+  border-color: #003b5c !important;
+}
+.v-application .background--text.text--darken-1 {
+  color: #003b5c !important;
+  caret-color: #003b5c !important;
+}
+.v-application .background.darken-2 {
+  background-color: #002644 !important;
+  border-color: #002644 !important;
+}
+.v-application .background--text.text--darken-2 {
+  color: #002644 !important;
+  caret-color: #002644 !important;
+}
+.v-application .background.darken-3 {
+  background-color: #00112e !important;
+  border-color: #00112e !important;
+}
+.v-application .background--text.text--darken-3 {
+  color: #00112e !important;
+  caret-color: #00112e !important;
+}
+.v-application .background.darken-4 {
+  background-color: #00001b !important;
+  border-color: #00001b !important;
+}
+.v-application .background--text.text--darken-4 {
+  color: #00001b !important;
+  caret-color: #00001b !important;
+}
+.v-application .twitter {
+  background-color: #00acee !important;
+  border-color: #00acee !important;
+}
+.v-application .twitter--text {
+  color: #00acee !important;
+  caret-color: #00acee !important;
+}
+.v-application .twitter.lighten-5 {
+  background-color: #ceffff !important;
+  border-color: #ceffff !important;
+}
+.v-application .twitter--text.text--lighten-5 {
+  color: #ceffff !important;
+  caret-color: #ceffff !important;
+}
+.v-application .twitter.lighten-4 {
+  background-color: #aeffff !important;
+  border-color: #aeffff !important;
+}
+.v-application .twitter--text.text--lighten-4 {
+  color: #aeffff !important;
+  caret-color: #aeffff !important;
+}
+.v-application .twitter.lighten-3 {
+  background-color: #8effff !important;
+  border-color: #8effff !important;
+}
+.v-application .twitter--text.text--lighten-3 {
+  color: #8effff !important;
+  caret-color: #8effff !important;
+}
+.v-application .twitter.lighten-2 {
+  background-color: #6de3ff !important;
+  border-color: #6de3ff !important;
+}
+.v-application .twitter--text.text--lighten-2 {
+  color: #6de3ff !important;
+  caret-color: #6de3ff !important;
+}
+.v-application .twitter.lighten-1 {
+  background-color: #47c7ff !important;
+  border-color: #47c7ff !important;
+}
+.v-application .twitter--text.text--lighten-1 {
+  color: #47c7ff !important;
+  caret-color: #47c7ff !important;
+}
+.v-application .twitter.darken-1 {
+  background-color: #0092d2 !important;
+  border-color: #0092d2 !important;
+}
+.v-application .twitter--text.text--darken-1 {
+  color: #0092d2 !important;
+  caret-color: #0092d2 !important;
+}
+.v-application .twitter.darken-2 {
+  background-color: #0078b6 !important;
+  border-color: #0078b6 !important;
+}
+.v-application .twitter--text.text--darken-2 {
+  color: #0078b6 !important;
+  caret-color: #0078b6 !important;
+}
+.v-application .twitter.darken-3 {
+  background-color: #005f9b !important;
+  border-color: #005f9b !important;
+}
+.v-application .twitter--text.text--darken-3 {
+  color: #005f9b !important;
+  caret-color: #005f9b !important;
+}
+.v-application .twitter.darken-4 {
+  background-color: #004880 !important;
+  border-color: #004880 !important;
+}
+.v-application .twitter--text.text--darken-4 {
+  color: #004880 !important;
+  caret-color: #004880 !important;
+}
+.v-application .linkedin {
+  background-color: #0e76a8 !important;
+  border-color: #0e76a8 !important;
+}
+.v-application .linkedin--text {
+  color: #0e76a8 !important;
+  caret-color: #0e76a8 !important;
+}
+.v-application .linkedin.lighten-5 {
+  background-color: #b5feff !important;
+  border-color: #b5feff !important;
+}
+.v-application .linkedin--text.text--lighten-5 {
+  color: #b5feff !important;
+  caret-color: #b5feff !important;
+}
+.v-application .linkedin.lighten-4 {
+  background-color: #98e1ff !important;
+  border-color: #98e1ff !important;
+}
+.v-application .linkedin--text.text--lighten-4 {
+  color: #98e1ff !important;
+  caret-color: #98e1ff !important;
+}
+.v-application .linkedin.lighten-3 {
+  background-color: #7ac5fc !important;
+  border-color: #7ac5fc !important;
+}
+.v-application .linkedin--text.text--lighten-3 {
+  color: #7ac5fc !important;
+  caret-color: #7ac5fc !important;
+}
+.v-application .linkedin.lighten-2 {
+  background-color: #5caadf !important;
+  border-color: #5caadf !important;
+}
+.v-application .linkedin--text.text--lighten-2 {
+  color: #5caadf !important;
+  caret-color: #5caadf !important;
+}
+.v-application .linkedin.lighten-1 {
+  background-color: #3c90c3 !important;
+  border-color: #3c90c3 !important;
+}
+.v-application .linkedin--text.text--lighten-1 {
+  color: #3c90c3 !important;
+  caret-color: #3c90c3 !important;
+}
+.v-application .linkedin.darken-1 {
+  background-color: #005d8d !important;
+  border-color: #005d8d !important;
+}
+.v-application .linkedin--text.text--darken-1 {
+  color: #005d8d !important;
+  caret-color: #005d8d !important;
+}
+.v-application .linkedin.darken-2 {
+  background-color: #004674 !important;
+  border-color: #004674 !important;
+}
+.v-application .linkedin--text.text--darken-2 {
+  color: #004674 !important;
+  caret-color: #004674 !important;
+}
+.v-application .linkedin.darken-3 {
+  background-color: #00305b !important;
+  border-color: #00305b !important;
+}
+.v-application .linkedin--text.text--darken-3 {
+  color: #00305b !important;
+  caret-color: #00305b !important;
+}
+.v-application .linkedin.darken-4 {
+  background-color: #001c43 !important;
+  border-color: #001c43 !important;
+}
+.v-application .linkedin--text.text--darken-4 {
+  color: #001c43 !important;
+  caret-color: #001c43 !important;
+}</style><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  </head>
+  <body >
+    <div data-app="true" data-server-rendered="true" id="app" id="app" class="v-application v-application--is-ltr theme--light"><div class="v-application--wrap"><main class="v-main" style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;"><div class="v-main__wrap"><header class="header mb-0" style="position:fixed;top:0;left:0;right:0;z-index:100;"><header class="v-sheet theme--light v-toolbar v-toolbar--flat transparent" style="height:56px;"><div class="v-toolbar__content" style="height:56px;"><div class="v-avatar" style="height:40px;min-width:40px;width:40px;border:3px solid #f0134d;"><div class="v-image v-responsive theme--light"><div class="v-image__image v-image__image--preload v-image__image--cover" style="background-image:;background-position:center center;"></div><div class="v-responsive__content"></div></div></div><div class="spacer"></div><button type="button" class="v-btn v-btn--icon v-btn--round theme--light v-size--large background--text"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-email theme--light"></i></span></button><button type="button" class="v-btn v-btn--icon v-btn--round theme--light v-size--large background--text"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-twitter theme--light"></i></span></button><button type="button" class="v-btn v-btn--icon v-btn--round theme--light v-size--large background--text"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-linkedin theme--light"></i></span></button><button type="button" class="mono font-weight-bold ml-3 v-btn v-btn--outlined theme--light v-size--small background--text"><span class="v-btn__content">
+          Resume
+        </span></button></div></header></header><div id="main"><video id="video" playsinline="" webkit-playsinline="" muted="muted" loop="loop" autoplay="autoplay" width="320" height="240" src="/olimaps.mp4" style="display:none;"></video><video id="videoPantala" playsinline="" webkit-playsinline="" muted="muted" loop="loop" autoplay="autoplay" width="320" height="240" src="/pantala.mp4" style="display:none;"></video><div class="v-card v-sheet theme--light rounded-0 secundary" style="scroll-snap-align:start;height:100vh;width:100vw;z-index:20;"><!----><div class="row pa-12 align-center justify-center" style="height:100%;width:100%;"><!----><div class="flex pt-6 xs12 lg5"><span class="mono font-weight-bold yellow--text">Greetings! I'm</span><h1 class="white--text mt-2" style="font-size:280%;font-weight:600;line-height:48px;display:none;">
+              Andriu Garcia
+            </h1><p class="white--text mt-2" style="font-size:240%;font-weight:600;line-height:48px;opacity:0.8;display:none;">
+              Building to give superpowers.
+            </p><p class="white--text" style="max-width:500px;display:none;">
+              My mission is to create value for people, to realise ideas that solve different needs and to use my development skills to maximise the value I can bring to them.
+            </p><div class="layout mb-2 px-0 justify-start" style="display:none;"><div tabindex="0" depressed="" class="
+                  text-capitalize
+                  d-flex
+                  flex-column
+                  justify-center
+                  align-center
+                  rounded-xl
+                  mr-2
+                  pa-4
+                 v-card v-card--link v-sheet v-sheet--outlined theme--dark secundary darken-1" style="min-width:80px;"><i aria-hidden="true" class="v-icon notranslate mdi mdi-email theme--dark" style="font-size:36px;"></i><div style="letter-spacing:0;">E-mail</div></div><div tabindex="0" depressed="" class="
+                  text-capitalize
+                  d-flex
+                  flex-column
+                  justify-center
+                  align-center
+                  rounded-xl
+                  mr-2
+                  pa-4
+                 v-card v-card--link v-sheet v-sheet--outlined theme--dark secundary darken-1" style="min-width:80px;"><i aria-hidden="true" class="v-icon notranslate mdi mdi-twitter theme--dark" style="font-size:36px;"></i><div style="letter-spacing:0;">Twitter</div></div><div tabindex="0" depressed="" class="
+                  text-capitalize
+                  d-flex
+                  flex-column
+                  justify-center
+                  align-center
+                  rounded-xl
+                  xl
+                  pa-4
+                 v-card v-card--link v-sheet v-sheet--outlined theme--dark secundary darken-1" style="min-width:80px;"><i aria-hidden="true" class="v-icon notranslate mdi mdi-linkedin theme--dark" style="font-size:36px;"></i><div style="letter-spacing:0;">Linkedin</div></div></div></div></div></div><canvas id="bg" style="position:fixed;top:0;bottom:0;right:0;left:0;"></canvas><div id="startCanvas"></div><div class="redbar"></div><div class="block d-flex flex-row-reverse v-card v-card--flat v-sheet theme--light transparent" style="padding-top:82px;padding-right:60px;"><div class="text-right" style="width:460px;max-width:80vw;"><div class="layout px-0 justify-end" style="margin-right:-39px;"><h1 class="mr-2">Olimaps</h1><div class="v-avatar" style="height:48px;min-width:48px;width:48px;z-index:10;"><div class="v-image v-responsive theme--light"><div class="v-image__image v-image__image--preload v-image__image--cover" style="background-image:;background-position:center center;"></div><div class="v-responsive__content"></div></div></div></div><span class="mono">Nuxt.js (Vue.js) · Express.js · Prisma.js · TypeScript · PostgreSQL · ElasticSearch </span><p class="mt-3" style="text-align:justify;font-weight:600;">
+          Olimaps is a social network with the mission of recovering real relationships between people, in this project I have been able to develop the complete platform, including its business model, architecture, design, branding, and implementation of the entire web app and infrastructure
+        </p><div class="layout px-0 justify-end"><button type="button" class="mr-2 text-capitalize v-btn v-btn--has-bg theme--light v-size--default grey lighten-4"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mr-1 mdi mdi-github theme--light"></i><span>GitHub</span></span></button><button type="button" class="text-capitalize v-btn v-btn--has-bg theme--dark v-size--default secundary"><span class="v-btn__content">Check App</span></button></div></div></div><div class="block d-flex flex-row-reverse v-card v-card--flat v-sheet theme--light transparent" style="padding-top:82px;padding-right:60px;"><div class="text-right" style="width:460px;max-width:80vw;"><div class="layout px-0 justify-end" style="margin-right:-39px;"><h1 class="mr-2">Pantala</h1><div class="v-avatar" style="height:48px;min-width:48px;width:48px;z-index:10;"><div class="v-image v-responsive theme--light"><div class="v-image__image v-image__image--preload v-image__image--cover" style="background-image:;background-position:center center;"></div><div class="v-responsive__content"></div></div></div></div><span class="mono">Nuxt.js (Vue.js), GraphQL, MySQL, Firebase, CloudFlare, Stripe </span><p class="mt-3" style="text-align:justify;font-weight:600;">
+          Pantala is a subscription service where users have 3 garments that they can change monthly
+        </p><div class="layout px-0 justify-end"><!----><button type="button" class="text-capitalize v-btn v-btn--has-bg theme--dark v-size--default secundary"><span class="v-btn__content">Check App</span></button></div></div></div><div class="v-card v-card--flat v-sheet theme--light transparent" style="scroll-snap-align:start;z-index:2;"><div class="layout px-0 mx-0 pb-12 justify-center" style="max-width:100%;"><div class="flex sm9 xs12"><div class="v-subheader theme--light" style="margin-top:72px;">Posts</div><hr role="separator" aria-orientation="horizontal" class="mx-4 v-divider theme--light"><div class="layout wrap justify-start" style="max-width:100%;"><div class="flex mb-4 xs12 md4"><div tabindex="0" class="ma-4 pa-3 v-card v-card--link v-sheet v-sheet--outlined theme--light rounded primary" style="height:100%;-webkit-box-shadow:10px 10px 0px 0px #000000;box-shadow:10px 10px 0px 0px #000000;"><h3 class="my-1">Trucos UX para diseñar un Curriculum</h3><p>Hoy os traigo 12 truquitos UX para que vuestro CURRÍCULUM sea ESPECTACULAR 🔥
+
+Dentro hilo! 🚀🚀...</p><div class="layout px-4 pb-2 justify-space-between" style="position:absolute;bottom:0;left:0;right:0;"><span>
+                    13 Cards
+                  </span><i> by Andriu Garcia </i></div></div></div><div class="flex mb-4 xs12 md4"><div tabindex="0" class="ma-4 pa-3 v-card v-card--link v-sheet v-sheet--outlined theme--light rounded primary" style="height:100%;-webkit-box-shadow:10px 10px 0px 0px #000000;box-shadow:10px 10px 0px 0px #000000;"><h3 class="my-1">Creando una Red Social para el COVID</h3><p>Tanto las redes sociales como el COVID nos han cambiado nuestra forma de contactar y socializar entre nosotros
+
+Se ha mo...</p><div class="layout px-4 pb-2 justify-space-between" style="position:absolute;bottom:0;left:0;right:0;"><span>
+                    4 Cards
+                  </span><i> by Andriu Garcia </i></div></div></div><div class="flex mb-4 xs12 md4"><div tabindex="0" class="ma-4 pa-3 v-card v-card--link v-sheet v-sheet--outlined theme--light rounded primary" style="height:100%;-webkit-box-shadow:10px 10px 0px 0px #000000;box-shadow:10px 10px 0px 0px #000000;"><h3 class="my-1">Creando un lector de noticias usando Twitter como CMS</h3><p>&quot;Me gustaría tener mi propio blog, pero no me da la vida para estar escribiendo artículos&quot;
+
+Este es un problema que teng...</p><div class="layout px-4 pb-2 justify-space-between" style="position:absolute;bottom:0;left:0;right:0;"><span>
+                    15 Cards
+                  </span><i> by Andriu Garcia </i></div></div></div><div class="flex xs12"><button type="button" class="mt-12 v-btn v-btn--block v-btn--has-bg theme--light v-size--default grey lighten-5"><span class="v-btn__content">More Posts</span></button></div></div></div></div></div><header class="v-sheet theme--dark v-toolbar background" style="height:56px;z-index:2;"><div class="v-toolbar__content" style="height:56px;"><div class="spacer"></div><span class="mono" style="font-size:min(3vw, 16px);">Made with Vue.js · Gridsome · Vuetify · Three.js</span><div class="spacer"></div></div></header><footer class="v-footer pa-6 pt-12 v-sheet theme--light secundary" style="scroll-snap-align:start;z-index:2;"><div class="layout px-0 justify-space-around wrap"><div class="flex mb-6 md5 xs12 sm12"><h1>Andriu Garcia</h1><div class="v-subheader theme--light">CV / Resume</div><div class="layout mb-2 px-0 justify-space-around"><button type="button" class="text-capitalize v-btn v-btn--block v-btn--has-bg theme--light v-size--default" style="background-color:#e11548;border-color:#e11548;"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mr-2 mdi mdi-paperclip theme--light"></i><span style="letter-spacing:0;">CV / Resume</span></span></button></div></div><div class="flex mb-6 md5 xs12 sm12"><h1>Let's Talk?</h1><div class="layout mb-2 px-0 justify-space-around"><button type="button" class="text-capitalize v-btn v-btn--has-bg theme--light v-size--default" style="background-color:#e11548;border-color:#e11548;"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mr-2 mdi mdi-twitter theme--light"></i><span style="letter-spacing:0;">@versymattic</span></span></button><button type="button" class="text-capitalize v-btn v-btn--has-bg theme--light v-size--default" style="background-color:#e11548;border-color:#e11548;"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mr-2 mdi mdi-linkedin theme--light"></i><span style="letter-spacing:0;">/in/andriugarcia</span></span></button></div><div class="v-input v-input--is-label-active v-input--is-dirty v-input--is-readonly theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--solo-inverted v-text-field--solo-flat v-text-field--enclosed"><div class="v-input__control"><div class="v-input__slot"><div class="v-text-field__slot"><input id="input-346" readonly="readonly" type="text" value="contacto@andriugarcia.com"></div><div class="v-input__append-inner"><div class="v-input__icon v-input__icon--append"><i aria-hidden="true" class="v-icon notranslate mdi mdi-at theme--light"></i></div></div></div><div class="v-text-field__details"><div class="v-messages theme--light"><div class="v-messages__wrapper"></div></div></div></div></div></div></div></footer></div></div></main></div></div>
+    <script>window.__INITIAL_STATE__={"data":{"allThreadsList":{"edges":[{"node":{"id":"1298918949149605888","title":"Trucos UX para diseñar un Curriculum","author":"Andriu Garcia","content":[{"text":"Hoy os traigo 12 truquitos UX para que vuestro CURRÍCULUM sea ESPECTACULAR 🔥\n\nDentro hilo! 🚀🚀","urls":[]},{"text":"🔎 INVESTIGA la empresa donde mandarás el CV, sus valores, que es lo que buscan en sus empleados\nSi adaptas tu currículum a esas necesidades de seguro que tendrás más posibilidades 🔥","urls":[]},{"text":"📄 De media se dedica 30-40 segundos en leer un currículum, así que NO TE PASES de una hoja porque raramente se va a leer, ¡Y no vale reducir el tamaño de letra! 😱","urls":[]},{"text":"🧽 ¿Qué no te cabe todo? No pasa nada por BORRAR, de hecho, si no tiene nada que ver con el trabajo qué estás buscando, ni siquiera deberías ponerlo!!","urls":[]},{"text":"🎮 Los hobbies no es que de mucha información, y aquí no es que tengamos mucho espacio libre, así que los hobbies no hace falta ponerlos 😱","urls":[]},{"text":"🏆 ORDENA todo en función de su importancia, lo más importante primero, es lo primero que van a leer! Si además saben que están buscando sabrás que poner primero ;)","urls":[]},{"text":"📊 Cuenta un LOGRO IMPORTANTE que tuviste en cada proyecto\u002Ftrabajo, los NÚMEROS siempre llaman la atención\nUn ejemplo sería \"He aumentado en un 10% la tasa de conversión en los registros al actualizar la landing\"","urls":[]},{"text":"🖍️ Se tiende mucho a ojear el currículum en vez de leerlo entero, usa la NEGRITA para destacar lo importante y así se pararán en esas partes!!!","urls":[]},{"text":"🎨 Dale un poco de COLOR al currículum, usalo para destacar, darle personalidad, que no pasa nada por hacerlo!!!","urls":[]},{"text":"💅 Un currículum dice mucho que ti, no solo por el contenido, si no también por lo limpio y bien diseñado que esté, no cuesta nada dedicarle un par de días en tener un currículum LIMPIO y que refleje tu ESTILO 😉","urls":[]},{"text":"🎥 Ten una versión en VÍDEO, con un vídeo se puede decir mil veces más que con cualquier texto, y el hecho de que nadie lo haga te hará tener muchos puntos para que te entrevisten!!","urls":[]},{"text":"🔗 ¿Les ha interesado tu currículum? Añade ENLACES por si quieren investigar un poco más, puede ser de tus proyectos, tu GitHub, tu cuenta de YouTube...","urls":[]},{"text":"👥 Acompáñalo con un LinkedIn bien actualizado y con recomendaciones de tus compañeros, tener el feedback de otras personas puede ser un gran punto a tu favor","urls":[]}]}},{"node":{"id":"1364649798717087750","title":"Creando una Red Social para el COVID","author":"Andriu Garcia","content":[{"text":"Tanto las redes sociales como el COVID nos han cambiado nuestra forma de contactar y socializar entre nosotros\n\nSe ha movido todo a lo VIRTUAL, cada vez las relaciones reales desaparecen más y más\n\nEn este hilo te cuento que SOLUCIÓN estamos desarrollando 🚀🚀🚀","urls":[]},{"text":"#Olimaps es una red social que te muestra todo aquello que pasa a tu alrededor\n\nEl mapa se convierte en un lienzo donde los usuarios pueden publicar en él y ver que está ocurriendo a su alrededor https:\u002F\u002Ft.co\u002FP8LTBQaKME","urls":["https:\u002F\u002Fpbs.twimg.com\u002Fmedia\u002FEvA1vzGWgAghwGs.jpg","https:\u002F\u002Fpbs.twimg.com\u002Fmedia\u002FEvA1wDPXEAQ3HZR.jpg"]},{"text":"También puedes crear eventos por la ciudad donde los usuarios interesados pueden apuntarse y realizar diferentes actividades, conocer a gente, descubrir la ciudad...\n\nLos demás podrán ver las publicaciones relacionadas con el evento, así que la siguiente vez a lo mejor se apuntan https:\u002F\u002Ft.co\u002FzX7EVJoASJ","urls":["https:\u002F\u002Fpbs.twimg.com\u002Fmedia\u002FEvA1weOXEAo9Juw.jpg"]},{"text":"Y bueno hay más cosillas, pero habrá que guardarse alguna para la próxima 🙄🙄\n\nSi os mola la idea, el ♥️ me ayuda a validar\n\nOs seguiré contando cositas\n\nHasta la próxima 👋","urls":[]}]}},{"node":{"id":"1506287844402376709","title":"Creando un lector de noticias usando Twitter como CMS","author":"Andriu Garcia","content":[{"text":"\"Me gustaría tener mi propio blog, pero no me da la vida para estar escribiendo artículos\"\n\nEste es un problema que tengo a día de hoy que seguro que muchos tienen. \n\nAsí que con mi mente de optimizar lo inoptimizable... Os cuento la solución que se me ha ocurrido. \n\n⬇️⬇️⬇️ https:\u002F\u002Ft.co\u002FmMxCeex8q8","urls":[""]},{"text":"La idea es muy sencilla, crear un blog que extraiga la información directamente de los hilos de Twitter que vaya haciendo.","urls":[]},{"text":"Ventajas:\n➡️ Puedo escribir en varios sitios a la vez con el mismo contenido\n➡️ El contenido es muy fácil de consumir al estar dividido por fragmentos de menos de 280 caracteres","urls":[]},{"text":"Y aprovechando que tengo el contenido dividido, he pensado mostrarlos como tarjetitas, un diseño que hace la lectura más agradable.","urls":[]},{"text":"Desventajas:\nTenemos contenido duplicado tanto en Twitter como en mi blog, lo que puede afectar negativamente en tema SEO.\n\nAunque no es mi idea hacer contenido para resolver necesidades de búsqueda, así que por ahora no me preocupa mucho.","urls":[]},{"text":"Para el desarrollo he utilizado Gridsome, un framework de Vue.js para JAMStack.\n\n¿Sabéis que significa JAMStack?\n\nhttps:\u002F\u002Ft.co\u002FJ6Q6g97Dub","urls":[]},{"text":"JAMStack es un standard para hacer páginas cuya diferencia es que el contenido de la página no se obtiene desde el cliente.\n\nEl contenido se trae al momento en el que generamos la página web para desplegarla en nuestro server.","urls":[]},{"text":"La ventaja principalmente es que conseguimos páginas estáticas con contenido externo.\n\nEn este ejemplo tendremos una página 100% estática pero con información de hilos de Twitter.\n\nY a una velocidad imposible de conseguir con otros métodos https:\u002F\u002Ft.co\u002FGAHXbUp7HW","urls":["https:\u002F\u002Fpbs.twimg.com\u002Fmedia\u002FFOdk-R5WYAQ42QU.jpg"]},{"text":"La mayor desventaja es que cada vez que haya contenido nuevo, habrá que volver a construir la página entera.\n\nPara esta situación se puede usar algún tipo de trigger que detecte estos cambios y reconstruya la página automáticamente.","urls":[]},{"text":"¿Y el hosting?\n\nBueno como os he comentado, con este sistema tenemos una página 100% estática. Así que lo podemos alojar en cualquier servicio de alojamiento gratuito como Netlify o Firebase Hosting...","urls":[]},{"text":"Otra curiosidad es como se obtiene el hilo completo de una página.\n\nParece algo sencillo, pero al final un hilo es una conversación completa donde solamente hablamos nosotros.\n\nUna conversación de Twitter tiene esta estructura en árbol: https:\u002F\u002Ft.co\u002FAUqxUxKLTu","urls":["https:\u002F\u002Fpbs.twimg.com\u002Fmedia\u002FFOdmmgeXsAUmPO1.jpg"]},{"text":"¿Cuál es el problema?\nQue no queremos el árbol entero, solamente aquellos tweets donde hablamos nosotros...","urls":[]},{"text":"La solución más sencilla es simplemente en vez de coger el enlace del tweet principal, cogemos el del último tweet de nuestro hilo, y vamos pidiendo sucesivamente su tweet padre hasta llegar al tweet principal.\n\nYa solamente tenemos que invertir la lista y voila!","urls":[]},{"text":"Por temas de responsive, en tamaño escritorio el sistema de tarjetas no se ve bien, así que lo he puesto como un artículo normal y corriente. https:\u002F\u002Ft.co\u002FXqOBc9pNDx","urls":["https:\u002F\u002Fpbs.twimg.com\u002Fmedia\u002FFOdoqB8XwAMOBMf.jpg"]},{"text":"Si queréis ver el resultado, tengo el blog montado en mi página principal https:\u002F\u002Ft.co\u002FESENXDEaSZ\n\nPoco a poco iré añadiendo cosillas interesantes. Por ahora es trabajo de un par de días.\n\n¿Qué os parece?","urls":[]}]}}]}},"context":{"locale":"en-en"}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/assets/js/app.50b7f317.js" defer></script><script src="/assets/js/page--src--pages--index-vue.667c9afb.js" defer></script>
+  </body>
+</html>

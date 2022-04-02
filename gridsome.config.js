@@ -6,7 +6,30 @@
 
 module.exports = {
   siteName: 'Andriu Garcia',
-  plugins: [],
+  plugins: [
+    {
+      use: "gridsome-plugin-i18n",
+      options: {
+        locales: [ // locales list
+          'es-es',
+          'en-en'
+        ],
+        pathAliases: {
+          'es-es': 'es',
+          'en-en': 'en'
+        },
+        fallbackLocale: 'es-es', // fallback language
+        defaultLocale: 'en-en', // default language
+        enablePathRewrite: true, // rewrite path with locale prefix, default: true
+        rewriteDefaultLanguage: true, // rewrite default locale, default: true
+        messages: {
+          'en-en': require('./src/locales/en-en.json'),
+          'es-es': require('./src/locales/es-es.json'),
+
+        }
+      }
+    }
+  ],
   templates: {
     threadsList: [
       {

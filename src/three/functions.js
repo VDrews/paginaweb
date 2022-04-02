@@ -19,7 +19,7 @@ const loadImage = function (src, width, height) {
 };
 
 const loadVideo = function (src, width, height) {
-  const video = document.getElementById('video');
+  const video = document.getElementById(src);
   video.play()
   const planeGeometry = new THREE.PlaneGeometry(width, height, 1, 1);
   const videoTexture = new THREE.VideoTexture(video);

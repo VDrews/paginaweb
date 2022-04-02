@@ -6,7 +6,7 @@ let planet = null
 let t = 0;
 const load = function (scene, xOffset = 0) {
   scene.add(
-    loadPhone("/olimaps.mp4", 20, 35, 2, 0x1c1c1c, {
+    loadPhone("video", 20, 35, 2, 0x1c1c1c, {
       x: -10,
       y: 23.5,
       z: -3,

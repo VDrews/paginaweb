@@ -16,20 +16,21 @@
             ></v-img>
           </v-avatar>
           <v-spacer></v-spacer>
-          <v-btn icon large @click="openEmail">
+          <v-btn color="background" icon large @click="openEmail">
             <v-icon>mdi-email</v-icon>
           </v-btn>
-          <v-btn icon large @click="openTwitter">
+          <v-btn color="background" icon large @click="openTwitter">
             <v-icon>mdi-twitter</v-icon>
           </v-btn>
-          <v-btn icon large @click="openLinkedin">
+          <v-btn color="background" icon large @click="openLinkedin">
             <v-icon>mdi-linkedin</v-icon>
           </v-btn>
           <v-btn
+            color="background"
             outlined
             small
             @click="downloadResumeFullstack"
-            class="mono ml-3"
+            class="mono font-weight-bold ml-3"
           >
             Resume
           </v-btn>
