@@ -16,6 +16,7 @@ const getCamera = function () {
   //   500
   // );
 
+  // 414 896
   updateAspectRatio()
 
   camera.position.setY(30);
@@ -28,12 +29,13 @@ const getCamera = function () {
 }
 
 const updateAspectRatio = function () {
-  const factor = 15
+  const aspectratio = window.innerWidth / window.innerHeight
+  const factor = 10
 
   const left = -48
   const bottom = -27
-  const right = (window.innerWidth / factor) + left
-  const top = (window.innerHeight / factor) + bottom
+  const right = (window.innerWidth / (factor * aspectratio)) + left
+  const top = (window.innerHeight / (factor * aspectratio)) + bottom
 
   camera = new THREE.OrthographicCamera(
     left, right, top, bottom,

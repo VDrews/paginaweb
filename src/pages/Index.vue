@@ -40,7 +40,7 @@
           justify="center"
           align="center"
         >
-          <v-flex xs4 v-if="$vuetify.breakpoint.mdAndUp">
+          <v-flex xs4 v-if="$vuetify.breakpoint.lgAndUp">
             <v-card
               class="rounded-xl elevation-12"
               style="
@@ -71,7 +71,7 @@
             >
             </v-card>
           </v-flex>
-          <v-flex xs12 md5 class="pt-6">
+          <v-flex xs12 lg5 class="pt-6">
             <span class="mono font-weight-bold yellow--text">Hola! Soy</span>
             <h1
               class="white--text mt-2"
@@ -141,48 +141,43 @@
       <v-card
         v-for="(project, i) in projects"
         :key="i"
-        class="block"
+        class="block d-flex flex-row-reverse"
         color="transparent"
         flat
-        style="padding-top: 96px"
+        style="padding-top: 82px; padding-right: 48px"
       >
-        <v-row class="pr-12" justify="end">
-          <div
-            class="text-right"
-            style="width: 460px; max-width: 80vw; padding-right: 34px"
-          >
-            <v-layout justify-end style="margin-right: -81px">
-              <h1 class="mr-2">{{ project.name }}</h1>
+        <div class="text-right" style="width: 460px; max-width: 80vw">
+          <v-layout class="px-0" justify-end style="margin-right: -39px">
+            <h1 class="mr-2">{{ project.name }}</h1>
 
-              <v-avatar style="z-index: 10">
-                <v-img :src="project.logo"></v-img>
-              </v-avatar>
-            </v-layout>
-            <span class="mono">{{ project.stack }} </span>
-            <p class="mt-3" style="text-align: justify; font-weight: 600">
-              {{ project.description }}
-            </p>
-            <v-layout justify-end class="px-0">
-              <v-btn
-                v-if="project.github.length != 0"
-                class="mr-2 text-capitalize"
-                depressed
-                color="grey lighten-4"
-              >
-                <v-icon class="mr-1">mdi-github</v-icon>
-                <span>GitHub</span>
-              </v-btn>
-              <v-btn
-                v-if="project.app.length != 0"
-                class="text-capitalize"
-                dark
-                depressed
-                color="secundary"
-                >Ver App</v-btn
-              >
-            </v-layout>
-          </div>
-        </v-row>
+            <v-avatar style="z-index: 10">
+              <v-img :src="project.logo"></v-img>
+            </v-avatar>
+          </v-layout>
+          <span class="mono">{{ project.stack }} </span>
+          <p class="mt-3" style="text-align: justify; font-weight: 600">
+            {{ project.description }}
+          </p>
+          <v-layout justify-end class="px-0">
+            <v-btn
+              v-if="project.github.length != 0"
+              class="mr-2 text-capitalize"
+              depressed
+              color="grey lighten-4"
+            >
+              <v-icon class="mr-1">mdi-github</v-icon>
+              <span>GitHub</span>
+            </v-btn>
+            <v-btn
+              v-if="project.app.length != 0"
+              class="text-capitalize"
+              dark
+              depressed
+              color="secundary"
+              >Ver App</v-btn
+            >
+          </v-layout>
+        </div>
       </v-card>
       <div id="endCanvas"></div>
       <v-card flat style="scroll-snap-align: start; z-index: 2">
@@ -240,7 +235,7 @@
       <v-footer
         color="secundary"
         class="pa-6 pt-12"
-        style="scroll-snap-align: start"
+        style="scroll-snap-align: start; z-index: 2"
       >
         <v-layout justify-space-around class="px-0" wrap>
           <v-flex md5 xs12 sm12 class="mb-6">
@@ -460,6 +455,10 @@ export default {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   height: 100vh;
+}
+
+html {
+  overflow-y: none;
 }
 
 .redbar {
