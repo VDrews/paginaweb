@@ -45,10 +45,8 @@
           align="center"
           @click="scrollProjects"
         >
-          <v-avatar color="background">
-            <v-icon color="secundary">mdi-arrow-down</v-icon>
-          </v-avatar>
-          <div class="background--text" style="font-weight: 600">
+          <v-icon class="mb-3" color="black">mdi-arrow-down</v-icon>
+          <div class="black--text" style="font-weight: 600">
             {{ $t("viewProjects") }}
           </div>
         </v-card>
@@ -168,17 +166,20 @@
                     justify-center
                     align-center
                     rounded-xl
-                    mr-2
+                    shadow
+                    mr-4
                     pa-4
                   "
                   outlined
                   depressed
-                  dark
-                  color="secundary darken-1"
+                  light
+                  color="primary"
                   @click="openEmail"
                 >
-                  <v-icon size="36">mdi-email</v-icon>
-                  <div style="letter-spacing: 0">E-mail</div>
+                  <v-icon class="black--text" size="36">mdi-email</v-icon>
+                  <div class="black--text" style="letter-spacing: 0">
+                    E-mail
+                  </div>
                 </v-card>
                 <v-card
                   style="min-width: 80px"
@@ -189,17 +190,20 @@
                     justify-center
                     align-center
                     rounded-xl
-                    mr-2
+                    shadow
+                    mr-4
                     pa-4
                   "
                   outlined
                   depressed
-                  dark
-                  color="secundary darken-1"
+                  light
+                  color="primary"
                   @click="openTwitter"
                 >
-                  <v-icon size="36">mdi-twitter</v-icon>
-                  <div style="letter-spacing: 0">Twitter</div>
+                  <v-icon class="black--text" size="36">mdi-twitter</v-icon>
+                  <div class="black--text" style="letter-spacing: 0">
+                    Twitter
+                  </div>
                 </v-card>
                 <v-card
                   style="min-width: 80px"
@@ -210,17 +214,20 @@
                     justify-center
                     align-center
                     rounded-xl
+                    shadow
                     xl
                     pa-4
                   "
                   outlined
                   depressed
-                  dark
-                  color="secundary darken-1"
+                  light
+                  color="primary"
                   @click="openLinkedin"
                 >
-                  <v-icon size="36">mdi-linkedin</v-icon>
-                  <div style="letter-spacing: 0">Linkedin</div>
+                  <v-icon class="black--text" size="36">mdi-linkedin</v-icon>
+                  <div class="black--text" style="letter-spacing: 0">
+                    Linkedin
+                  </div>
                 </v-card>
               </v-layout>
             </v-fade-transition>
@@ -292,15 +299,11 @@
                 class="mb-4"
               >
                 <v-card
-                  class="ma-4 pa-3"
+                  class="ma-4 pa-3 shadow"
                   outlined
                   rounded
                   color="primary"
-                  style="
-                    height: 100%;
-                    -webkit-box-shadow: 10px 10px 0px 0px #000000;
-                    box-shadow: 10px 10px 0px 0px #000000;
-                  "
+                  style="height: 100%"
                   @click="$router.push({ path: '/blog/' + edge.node.id })"
                 >
                   <h3 class="my-1">{{ edge.node.title }}</h3>
@@ -584,6 +587,11 @@ export default {
 
 html {
   overflow-y: none;
+}
+
+.shadow {
+  -webkit-box-shadow: 10px 10px 0px 0px #000000;
+  box-shadow: 10px 10px 0px 0px #000000;
 }
 
 .redbar {
