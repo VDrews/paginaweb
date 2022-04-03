@@ -16,17 +16,17 @@
             ></v-img>
           </v-avatar>
           <v-spacer></v-spacer>
-          <v-btn color="background" icon large @click="openEmail">
+          <v-btn :color="colorContrast" icon large @click="openEmail">
             <v-icon>mdi-email</v-icon>
           </v-btn>
-          <v-btn color="background" icon large @click="openTwitter">
+          <v-btn :color="colorContrast" icon large @click="openTwitter">
             <v-icon>mdi-twitter</v-icon>
           </v-btn>
-          <v-btn color="background" icon large @click="openLinkedin">
+          <v-btn :color="colorContrast" icon large @click="openLinkedin">
             <v-icon>mdi-linkedin</v-icon>
           </v-btn>
           <v-btn
-            color="background"
+            :color="colorContrast"
             outlined
             small
             @click="downloadResumeFullstack"
@@ -51,6 +51,17 @@ query {
 
 <script>
 export default {
+  data() {
+    return {
+      colorContrast: "background",
+    };
+  },
+  mounted() {
+    this.colorContrastEvent();
+    document.getElementById("main").addEventListener("scroll", () => {
+      this.colorContrastEvent();
+    });
+  },
   methods: {
     openEmail() {
       window.open("mailto:contacto@andriugarcia.com");
@@ -68,6 +79,16 @@ export default {
     },
     downloadResumeProductManager() {
       window.open("/ResumeAndriuGarcia-ProductManager.pdf");
+    },
+    colorContrastEvent() {
+      if (
+        this.$route.name.startsWith("home") &&
+        document.getElementById("main").scrollTop + 20 < window.innerHeight
+      ) {
+        this.colorContrast = "white";
+      } else {
+        this.colorContrast = "background";
+      }
     },
   },
 };

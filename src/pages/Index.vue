@@ -123,7 +123,7 @@
           </v-flex>
           <v-flex xs12 lg5 class="pt-6">
             <span class="mono font-weight-bold yellow--text">{{
-              $t("greetings")
+              greetings
             }}</span>
             <v-fade-transition>
               <h1
@@ -274,11 +274,7 @@
           </v-layout>
         </div>
       </v-card>
-      <v-card
-        flat
-        color="transparent"
-        style="scroll-snap-align: start; z-index: 2"
-      >
+      <v-card flat style="scroll-snap-align: start; z-index: 2">
         <v-layout
           class="px-0 mx-0 pb-12"
           justify-center
@@ -436,11 +432,22 @@ export default {
     downloadResumeProductManager() {
       window.open("/ResumeAndriuGarcia-ProductManager.pdf");
     },
+    typeWriter() {
+      if (this.letterWritten < this.$t("greetings").length) {
+        this.greetings += this.$t("greetings").charAt(this.letterWritten);
+        this.letterWritten++;
+        const speed =
+          this.$t("greetings").charAt(this.letterWritten) == " " ? 500 : 25;
+        setTimeout(this.typeWriter, speed);
+      }
+    },
   },
 
   data() {
     return {
       projectShortcutIteration: 0,
+      letterWritten: 0,
+      greetings: "",
       projectIcons: [
         "https://olimaps.com/_nuxt/img/olimaps-logo.2297405.png",
         require("~/assets/pantala.png"),
@@ -485,6 +492,7 @@ export default {
   },
 
   mounted() {
+    this.typeWriter();
     const THREE = require("three");
     const olimaps = require("@/three/pages/olimaps");
     const pantala = require("@/three/pages/pantala");
@@ -554,10 +562,11 @@ export default {
 
     animate();
 
-    setTimeout(() => (this.nameShow = true), 0);
-    setTimeout(() => (this.missionShow = true), 500);
-    setTimeout(() => (this.descriptionShow = true), 1000);
-    setTimeout(() => (this.ctaShow = true), 1500);
+    const delay = 2000;
+    setTimeout(() => (this.nameShow = true), 0 + delay);
+    setTimeout(() => (this.missionShow = true), 500 + delay);
+    setTimeout(() => (this.descriptionShow = true), 1000 + delay);
+    setTimeout(() => (this.ctaShow = true), 1500 + delay);
   },
 };
 </script>
