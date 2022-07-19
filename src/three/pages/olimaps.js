@@ -59,6 +59,7 @@ const load = function (scene, xOffset = 0) {
       planet.position.y = 15;
 
       const locations = [];
+      const textures = [new THREE.TextureLoader().load("/location.png")]
 
       for (let i = 0; i < 5; i += 1) {
         const planeGeometry = new THREE.PlaneGeometry(2, 2, 1, 1);

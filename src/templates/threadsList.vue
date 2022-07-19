@@ -114,11 +114,11 @@
               />
               <div v-if="i == 0" class="mb-4">
                 <h1>{{ $page.threadsList.title }}</h1>
-                <i>por {{ $page.threadsList.author }} </i>
+                <i>{{ $t("by") }} {{ $page.threadsList.author }} </i>
                 <v-layout justify-end>
                   <v-layout justify-end align-center>
                     <v-icon>mdi-heart-outline</v-icon>
-                    <span class="ml-2">
+                    <span class="ml-2 mt-1">
                       {{
                         $page.threadsList.content[0].public_metrics.like_count
                       }}
@@ -131,9 +131,9 @@
                     large
                     color="red lighten-5"
                   >
-                    <span class="mr-2 secundary--text text-capitalize"
-                      >Compartir</span
-                    >
+                    <span class="mr-2 secundary--text text-capitalize">{{
+                      $t("share")
+                    }}</span>
                     <v-icon color="secundary" size="32"
                       >mdi-share-variant</v-icon
                     >
@@ -159,16 +159,13 @@
               <span class="ml-4 font-weight-bold">Andriu Garcia</span>
             </v-layout>
             <p class="font-weight-light mt-4">
-              Mi misión es crear para dar valor para las personas, hacer
-              realidad ideas que resuelvan diferentes necesidades y utilizar mis
-              conocimientos de desarrollo para maximizar el valor que les puedo
-              aportar.
+              {{ $t("description") }}
             </p>
           </v-card>
-          <v-subheader class="mt-6">Otras publicaciones</v-subheader>
+          <v-subheader class="mt-6">{{ $t("otherPosts") }}</v-subheader>
           <v-divider class="mx-4"></v-divider>
           <v-card
-            v-for="(edge, i) in $page.posts.edges"
+            v-for="(edge, i) in posts"
             :key="i"
             class="ma-4 pa-3"
             outlined
@@ -184,7 +181,7 @@
             <p>{{ edge.node.content[0].text }}</p>
             <v-layout class="px-0" justify-space-between>
               <span> {{ edge.node.content.length }} Tarjetas </span>
-              <i> por {{ edge.node.author }} </i>
+              <i> {{ $t("by") }} {{ edge.node.author }} </i>
             </v-layout>
           </v-card>
         </v-flex>
@@ -213,6 +210,7 @@ query($id: ID!) {
         id,
         title,
         author,
+        locale,
         content {
           text,
           urls
@@ -227,6 +225,14 @@ query($id: ID!) {
 <script>
 import GamecardStack from "@/components/GamecardStack.vue";
 export default {
+  computed: {
+    posts() {
+      console.log(this.$page.posts.edges);
+      return this.$page.posts.edges.filter((post) =>
+        this.$i18n.locale.startsWith(post.node.locale)
+      );
+    },
+  },
   metaInfo() {
     return {
       title: this.$page.threadsList.title,

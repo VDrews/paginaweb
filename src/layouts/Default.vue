@@ -16,6 +16,24 @@
             ></v-img>
           </v-avatar>
           <v-spacer></v-spacer>
+          <v-btn
+            v-if="$i18n.locale == 'es-es'"
+            class="mr-1"
+            depressed
+            color="transparent"
+            @click="switchToEnglish"
+          >
+            <span :class="colorContrast + '--text'"><b>ES</b> / EN</span>
+          </v-btn>
+          <v-btn
+            v-else
+            class="mr-1"
+            depressed
+            color="transparent"
+            @click="switchToSpanish"
+          >
+            <span :class="colorContrast + '--text'">ES / <b>EN</b></span>
+          </v-btn>
           <v-btn :color="colorContrast" icon large @click="openEmail">
             <v-icon>mdi-email</v-icon>
           </v-btn>
@@ -63,6 +81,12 @@ export default {
     });
   },
   methods: {
+    switchToEnglish() {
+      window.location.href = window.location.href.replace("/es/", "/en/");
+    },
+    switchToSpanish() {
+      window.location.href = window.location.href.replace("/en/", "/es/");
+    },
     openEmail() {
       window.open("mailto:contacto@andriugarcia.com");
     },

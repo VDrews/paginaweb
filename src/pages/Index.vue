@@ -368,14 +368,19 @@
                 <span style="letter-spacing: 0">/in/andriugarcia</span>
               </v-btn>
             </v-layout>
-            <v-text-field
-              value="contacto@andriugarcia.com"
-              append-icon="mdi-at"
-              solo-inverted
-              flat
-              readonly
-              @click="window.open('mailto:contacto@andriugarcia.com')"
-            ></v-text-field>
+            <v-btn
+              block
+              class="px-0 text-lowercase"
+              style="letter-spacing: 0"
+              depressed
+              color="#e11548"
+              @click="openEmail"
+            >
+              <v-layout align-center justify-space-between>
+                <span>contacto@andriugarcia.com</span>
+                <v-icon>mdi-at</v-icon>
+              </v-layout>
+            </v-btn>
           </v-flex>
         </v-layout>
       </v-footer>
@@ -410,9 +415,7 @@ let pickalook;
 let hover = false;
 export default {
   metaInfo() {
-    return {
-      title: "Posts",
-    };
+    return {};
   },
 
   methods: {
@@ -527,7 +530,7 @@ export default {
         hover = true;
         olimaps.hover();
         pantala.hover();
-        pickalook.hover();
+        // pickalook.hover();
       } else if (
         hover &&
         !(
@@ -538,7 +541,7 @@ export default {
         hover = false;
         olimaps.unhover();
         pantala.unhover();
-        pickalook.unhover();
+        // pickalook.unhover();
       }
     });
 
@@ -733,6 +736,10 @@ html {
   scroll-snap-align: start;
   height: 100vh;
   z-index: 20;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .mono {
