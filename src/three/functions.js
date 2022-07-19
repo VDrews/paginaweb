@@ -59,18 +59,59 @@ const load3DModel = function (src, scale, callback) {
 }
 
 const loadPhone = function (src, width, height, thick, color, { x, y, z }, isVideo = false) {
-  const geometry = new RoundedBoxGeometry(width, height, thick, 3, 1, 1);
-  const phoneMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0xffffff,
-    emissive: color,
-    roughness: 0.5,
-    metalness: 1,
-    reflectivity: 0.8,
-  });
-  const phone = new THREE.Mesh(geometry, phoneMaterial);
+  const phone = new THREE.Group();
+  loader.load(
+    "/phone/scene.gltf",
+    function (gltf) {
+      console.log(gltf);
+      const scale = 5
+      const phonematerial = new THREE.MeshPhysicalMaterial({
+        color: color,
+        emissive: color,
+        roughness: 0.2,
+        metalness: 1,
+        reflectivity: 0.8,
+      });
+      const buttonsmaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x1c1c1c,
+        emissive: 0x1c1c1c,
+        roughness: 0.5,
+        metalness: 1,
+        reflectivity: 0.8,
+      });
+      const glassmaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x1c1c1c,
+        emissive: 0x1c1c1c,
+        roughness: 0,
+        metalness: 1,
+        reflectivity: 0.8,
+      });
+      gltf.scene.children[0].material = buttonsmaterial
+      gltf.scene.children[1].material = buttonsmaterial
+      gltf.scene.children[2].material = buttonsmaterial
+      gltf.scene.children[3].children[0].material = phonematerial
+      gltf.scene.children[3].children[1].material = glassmaterial
+      gltf.scene.scale.set(scale, scale * 0.98, scale);
+      gltf.scene.position.z -= 0.12
+      gltf.scene.rotation.y = THREE.MathUtils.degToRad(-90)
+      phone.add(gltf.scene)
+    },
+    undefined,
+    function (error) {
+      console.error(error);
+    }
+  );
   phone.position.x = x;
   phone.position.z = z;
   phone.position.y = y;
+
+  // phone.position.x -= 45
+  // phone.position.y += 30
+  // phone.position.z += 60
+  // phone.rotation.z = THREE.MathUtils.degToRad(15);
+  // phone.rotation.y = THREE.MathUtils.degToRad(-50);
+
+
 
   let olimaps = null
   if (!isVideo) {

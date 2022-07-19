@@ -50,27 +50,60 @@ module.exports = function (api) {
       {
         id: '1506287844402376709',
         title: 'Creando un lector de noticias usando Twitter como CMS',
+        title_en: 'Creating a news reader using Twitter as a CMS',
         author: 'Andriu Garcia'
       },
       {
         id: '1364649798717087750',
         title: 'Creando una Red Social para el COVID',
+        title_en: 'Creating a Social Network for COVID',
         author: 'Andriu Garcia'
       },
       {
         id: '1298918949149605888',
         title: 'Trucos UX para diseñar un Curriculum',
+        title_en: 'UX tips for designing a CV',
         author: 'Andriu Garcia'
       },
     ]
 
     for (tweet of tweets) {
-      const node = await getThread(tweet.id)
+      let node = await getThread(tweet.id)
       threadCollection.addNode({
-        id: tweet.id,
+        id: tweet.id + '_es',
         title: tweet.title,
         author: tweet.author,
+        locale: 'es',
         content: node
+      })
+
+      node = node.map(async (content) => {
+        const { data } = await axios.post("https://api-free.deepl.com/v2/translate", null, {
+          params: {
+            auth_key: process.env.DEEPL_AUTH_KEY,
+            text: content.text,
+            target_lang: 'en'
+          }
+        })
+
+        // console.log(data);
+
+        return {
+          ...content,
+          text: data.translations[0].text
+        }
+      })
+
+
+      Promise.all(node).then((translatedNode) => {
+        console.log("NODE: ", tweet.id);
+        threadCollection.addNode({
+          id: tweet.id + '_en',
+          title: tweet.title_en,
+          author: tweet.author,
+          locale: 'en',
+          content: translatedNode
+        })
       })
     }
 

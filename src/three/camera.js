@@ -19,6 +19,7 @@ const getCamera = function () {
   // 414 896
   updateAspectRatio()
 
+  camera.position.setX(0);
   camera.position.setY(30);
   camera.position.setZ(30);
   camera.rotation.x = THREE.MathUtils.degToRad(-31);

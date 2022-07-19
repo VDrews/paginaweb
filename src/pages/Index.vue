@@ -30,7 +30,7 @@
         color="secundary"
         style="
           scroll-snap-align: start;
-          height: 100vh;
+          height: calc(100vh + 16px);
           width: 100vw;
           z-index: 20;
         "
@@ -66,7 +66,7 @@
                 background: linear-gradient(-45deg, #ddd9ce, #e0e2e1);
               "
             >
-              <v-img :src="require('~/assets/fotoperfil.png')"></v-img>
+              <v-img :src="require('~/assets/fotoperfil.jpg')"></v-img>
             </v-card>
             <v-card
               outlined
@@ -120,7 +120,7 @@
             </v-card>
           </v-flex>
           <v-flex xs12 lg5 class="pt-6">
-            <span class="mono font-weight-bold yellow--text">{{
+            <span class="mono font-weight-bold primary--text">{{
               greetings
             }}</span>
             <v-fade-transition>
@@ -158,7 +158,7 @@
             <v-fade-transition>
               <v-layout v-show="ctaShow" class="mb-2 px-0" justify-start>
                 <v-card
-                  style="min-width: 80px"
+                  style="min-width: 80px; border: 1px solid #ffc764 !important"
                   class="
                     text-capitalize
                     d-flex
@@ -166,23 +166,23 @@
                     justify-center
                     align-center
                     rounded-xl
-                    shadow
+                    yellow--shadow
                     mr-4
                     pa-4
                   "
                   outlined
                   depressed
                   light
-                  color="primary"
+                  color="secundary"
                   @click="openEmail"
                 >
-                  <v-icon class="black--text" size="36">mdi-email</v-icon>
-                  <div class="black--text" style="letter-spacing: 0">
+                  <v-icon class="primary--text" size="36">mdi-email</v-icon>
+                  <div class="primary--text" style="letter-spacing: 0">
                     E-mail
                   </div>
                 </v-card>
                 <v-card
-                  style="min-width: 80px"
+                  style="min-width: 80px; border: 1px solid #ffc764 !important"
                   class="
                     text-capitalize
                     d-flex
@@ -190,23 +190,23 @@
                     justify-center
                     align-center
                     rounded-xl
-                    shadow
+                    yellow--shadow
                     mr-4
                     pa-4
                   "
                   outlined
                   depressed
                   light
-                  color="primary"
+                  color="secundary"
                   @click="openTwitter"
                 >
-                  <v-icon class="black--text" size="36">mdi-twitter</v-icon>
-                  <div class="black--text" style="letter-spacing: 0">
+                  <v-icon class="primary--text" size="36">mdi-twitter</v-icon>
+                  <div class="primary--text" style="letter-spacing: 0">
                     Twitter
                   </div>
                 </v-card>
                 <v-card
-                  style="min-width: 80px"
+                  style="min-width: 80px; border: 1px solid #ffc764 !important"
                   class="
                     text-capitalize
                     d-flex
@@ -214,18 +214,18 @@
                     justify-center
                     align-center
                     rounded-xl
-                    shadow
+                    yellow--shadow
                     xl
                     pa-4
                   "
                   outlined
                   depressed
                   light
-                  color="primary"
+                  color="secundary"
                   @click="openLinkedin"
                 >
-                  <v-icon class="black--text" size="36">mdi-linkedin</v-icon>
-                  <div class="black--text" style="letter-spacing: 0">
+                  <v-icon class="primary--text" size="36">mdi-linkedin</v-icon>
+                  <div class="primary--text" style="letter-spacing: 0">
                     Linkedin
                   </div>
                 </v-card>
@@ -258,13 +258,14 @@
           </v-layout>
           <span class="mono">{{ project.stack }} </span>
           <p class="mt-3" style="text-align: justify; font-weight: 600">
-            {{ project.description }}
+            {{ project.description[$i18n.locale] }}
           </p>
           <v-layout justify-end class="px-0">
             <v-btn
               v-if="project.github.length != 0"
               class="mr-2 text-capitalize"
               depressed
+              @click="openWindow(project.github)"
               color="grey lighten-4"
             >
               <v-icon class="mr-1">mdi-github</v-icon>
@@ -275,6 +276,7 @@
               class="text-capitalize"
               dark
               depressed
+              @click="openWindow(project.app)"
               color="secundary"
               >{{ $t("checkApp") }}</v-btn
             >
@@ -291,13 +293,7 @@
             <v-subheader style="margin-top: 72px">Posts</v-subheader>
             <v-divider class="mx-4"></v-divider>
             <v-layout wrap justify-start style="max-width: 100%">
-              <v-flex
-                v-for="(edge, i) in $page.allThreadsList.edges"
-                :key="i"
-                xs12
-                md4
-                class="mb-4"
-              >
+              <v-flex v-for="(edge, i) in posts" :key="i" xs12 md4 class="mb-4">
                 <v-card
                   class="ma-4 pa-3 shadow"
                   outlined
@@ -321,9 +317,11 @@
                 </v-card>
               </v-flex>
               <v-flex xs12>
-                <v-btn class="mt-12" block depressed color="grey lighten-5">{{
-                  $t("morePosts")
-                }}</v-btn>
+                <g-link to="/posts/">
+                  <v-btn class="mt-12" block depressed color="grey lighten-5">{{
+                    $t("morePosts")
+                  }}</v-btn>
+                </g-link>
               </v-flex>
             </v-layout>
           </v-flex>
@@ -387,12 +385,13 @@
 
 <page-query>
 query {
-  allThreadsList(limit: 3) {
+  allThreadsList {
     edges {
       node {
         id,
         title,
         author,
+        locale,
         content {
           text,
           urls
@@ -405,6 +404,10 @@ query {
 
 <script>
 let threeLoaded = false;
+let olimaps;
+let pantala;
+let pickalook;
+let hover = false;
 export default {
   metaInfo() {
     return {
@@ -413,6 +416,9 @@ export default {
   },
 
   methods: {
+    openWindow(href) {
+      window.open(href);
+    },
     scrollProjects() {
       document
         .getElementById("main")
@@ -467,8 +473,12 @@ export default {
         {
           name: "Olimaps",
           logo: "https://olimaps.com/_nuxt/img/olimaps-logo.2297405.png",
-          description:
-            "Olimaps is a social network with the mission of recovering real relationships between people, in this project I have been able to develop the complete platform, including its business model, architecture, design, branding, and implementation of the entire web app and infrastructure",
+          description: {
+            "en-en":
+              "Olimaps is a social network with the mission of recovering real relationships between people, in this project I have been able to develop the complete platform, including its business model, architecture, design, branding, and implementation of the entire web app and infrastructure",
+            "es-es":
+              "Olimaps es una red social con la misión de recuperar las relaciones reales entre las personas, en este proyecto he podido desarrollar la plataforma completa, incluyendo su modelo de negocio, arquitectura, diseño, branding, e implementación de toda la app web e infraestructura",
+          },
           stack:
             "Nuxt.js (Vue.js) · Express.js · Prisma.js · TypeScript · PostgreSQL · ElasticSearch",
           app: "https://olimaps.com",
@@ -477,8 +487,12 @@ export default {
         {
           name: "Pantala",
           logo: require("~/assets/pantala.png"),
-          description:
-            "Pantala is a subscription service where users have 3 garments that they can change monthly",
+          description: {
+            "en-en":
+              "Pantala is a subscription service where users have 3 garments that they can change monthly",
+            "es-es":
+              "Pantala es un servicio de suscripción en el que los usuarios disponen de 3 prendas que pueden cambiar mensualmente",
+          },
           stack:
             "Nuxt.js (Vue.js), GraphQL, MySQL, Firebase, CloudFlare, Stripe",
           app: "https://pantala.es",
@@ -488,6 +502,14 @@ export default {
     };
   },
 
+  computed: {
+    posts() {
+      return this.$page.allThreadsList.edges
+        .filter((post) => this.$i18n.locale.startsWith(post.node.locale))
+        .slice(0, 3);
+    },
+  },
+
   filters: {
     truncate(value) {
       return value.substr(0, 120) + "...";
@@ -495,10 +517,36 @@ export default {
   },
 
   mounted() {
+    document.addEventListener("mousemove", (event) => {
+      // console.log(`Mouse X: ${event.clientX}, Mouse Y: ${event.clientY}`);
+      if (
+        !hover &&
+        event.clientX < window.innerWidth / 2 &&
+        event.clientY > window.innerHeight / 2
+      ) {
+        hover = true;
+        olimaps.hover();
+        pantala.hover();
+        pickalook.hover();
+      } else if (
+        hover &&
+        !(
+          event.clientX < window.innerWidth / 2 &&
+          event.clientY > window.innerHeight / 2
+        )
+      ) {
+        hover = false;
+        olimaps.unhover();
+        pantala.unhover();
+        pickalook.unhover();
+      }
+    });
+
     this.typeWriter();
     const THREE = require("three");
-    const olimaps = require("@/three/pages/olimaps");
-    const pantala = require("@/three/pages/pantala");
+    olimaps = require("@/three/pages/olimaps");
+    pantala = require("@/three/pages/pantala");
+    // pickalook = require("@/three/pages/pickalook");
     const { getCamera, moveCamera } = require("@/three/camera");
 
     const scene = new THREE.Scene();
@@ -523,9 +571,13 @@ export default {
 
     setTimeout(() => {
       const block = document.getElementsByClassName("block")[1];
-      const xoffset = step * block.offsetHeight * 0.2;
+      let xoffset = step * block.offsetHeight * 0.2;
 
       scene.add(pantala.load(xoffset));
+
+      // step = 2;
+      // xoffset = step * block.offsetHeight * 0.2;
+      // scene.add(pickalook.load(xoffset));
     });
 
     // const map = loadImage("/world-map-vector.png", 100, 60);
@@ -559,6 +611,7 @@ export default {
       // updateAspectRatio();
       olimaps.animate();
       pantala.animate();
+      // pickalook.animate();
 
       // controls.update();
     }
@@ -587,11 +640,6 @@ export default {
 
 html {
   overflow-y: none;
-}
-
-.shadow {
-  -webkit-box-shadow: 10px 10px 0px 0px #000000;
-  box-shadow: 10px 10px 0px 0px #000000;
 }
 
 .redbar {

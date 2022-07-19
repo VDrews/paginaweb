@@ -157,4 +157,14 @@ body {
 .nav__link {
   margin-left: 20px;
 }
+
+.shadow {
+  -webkit-box-shadow: 10px 10px 0px 0px #000000;
+  box-shadow: 10px 10px 0px 0px #000000;
+}
+
+.yellow--shadow {
+  -webkit-box-shadow: 10px 10px 0px 0px #ffc764;
+  box-shadow: 10px 10px 0px 0px #ffc764;
+}
 </style>

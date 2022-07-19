@@ -1,4 +1,8 @@
 const THREE = require("three");
+const TWEEN = require("@tweenjs/tween.js");
+
+let phone;
+
 const { loadPhone, loadImage } = require("@/three/functions")
 
 const loadCarpet = (src, width, height, thick) => {
@@ -43,12 +47,14 @@ const load = function (xoffset = 0) {
 
   pantala.position.x = xoffset
 
+  phone = loadPhone("videoPantala", 20, 35, 2, 0x2c2c2c, {
+    x: -10,
+    y: 23.5,
+    z: -3,
+  }, true)
+
   pantala.add(
-    loadPhone("videoPantala", 20, 35, 2, 0x1c1c1c, {
-      x: -10,
-      y: 23.5,
-      z: -3,
-    }, true)
+    phone
   );
 
   const carpet = loadCarpet("/textures/carpet.jpeg", 550, 400, 5)
@@ -173,9 +179,24 @@ const load = function (xoffset = 0) {
   return pantala
 }
 
+const hover = function () {
+  const targetPosition = new THREE.Vector3(phone.position.x - 45, phone.position.y + 30, phone.position.z + 60)
+  const tweenPosition = new TWEEN.Tween(phone.position).to(targetPosition, 500);
+  const tweenRotation = new TWEEN.Tween(phone.rotation).to({ x: THREE.MathUtils.degToRad(-20), y: THREE.MathUtils.degToRad(-45), z: THREE.MathUtils.degToRad(-12) }, 500);
+  tweenPosition.start();
+  tweenRotation.start();
+}
+const unhover = function () {
+  const targetPosition = new THREE.Vector3(-10, 23.5, -3)
+  const tweenPosition = new TWEEN.Tween(phone.position).to(targetPosition, 500);
+  const tweenRotation = new TWEEN.Tween(phone.rotation).to({ x: 0, y: THREE.MathUtils.degToRad(0), z: 0 }, 500);
+  tweenPosition.start();
+  tweenRotation.start();
+}
+
 let t = 0
 
-const animate = function () {
+const animate = function (time) {
   t += 0.05;
 
   if (clothings) {
@@ -184,8 +205,10 @@ const animate = function () {
     clothings[2].position.y += 0.05 * Math.sin(t + 0.16);
   }
 
+  TWEEN.update(time);
+
 }
 
 export {
-  load, animate
+  load, animate, hover, unhover
 }

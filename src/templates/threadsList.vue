@@ -86,7 +86,9 @@
           </span>
         </v-layout>
         <v-btn @click="share" rounded depressed large color="red lighten-5">
-          <span class="mr-2 secundary--text text-capitalize">Compartir</span>
+          <span class="mr-2 secundary--text text-capitalize">{{
+            $t("share")
+          }}</span>
           <v-icon color="secundary" size="32">mdi-share-variant</v-icon>
         </v-btn>
       </v-layout>
