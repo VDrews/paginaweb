@@ -273,17 +273,6 @@ export default {
   // },
 
   methods: {
-    async share() {
-      try {
-        await navigator.share({
-          title: this.$page.threadsList.title,
-          text: "",
-          url: window.location.href,
-        });
-      } catch (err) {
-        console.error(err);
-      }
-    },
     handleCardAccepted() {
       console.log("handleCardAccepted");
     },

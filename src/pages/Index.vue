@@ -36,20 +36,29 @@
         "
         tile
       >
-        <v-card
-          v-if="$vuetify.breakpoint.lgAndUp"
-          flat
-          color="transparent"
+        <v-layout
+          justify-center
           style="position: absolute; bottom: 12px; left: 0; right: 0"
-          column
-          align="center"
-          @click="scrollProjects"
         >
-          <v-icon class="mb-3" color="black">mdi-arrow-down</v-icon>
-          <div class="black--text" style="font-weight: 600">
-            {{ $t("viewProjects") }}
+          <v-card
+            v-if="$vuetify.breakpoint.lgAndUp"
+            flat
+            class="rounded-xl px-6 py-2"
+            rounded
+            color="secundary darken-1"
+            column
+            align="center"
+            @click="scrollProjects"
+          >
+            <v-icon class="mb-1" color="white">mdi-arrow-down</v-icon>
+            <div class="white--text" style="font-weight: 600; font-size: 0.8em">
+              {{ $t("viewProjects") }}
+            </div>
+          </v-card>
+          <div v-else class="arrow bounce" @click="scrollProjects">
+            <v-icon>mdi-chevron-down</v-icon>
           </div>
-        </v-card>
+        </v-layout>
         <v-row
           class="pa-12"
           style="height: 100%; width: 100%"
@@ -256,14 +265,25 @@
               <v-img :src="project.logo"></v-img>
             </v-avatar>
           </v-layout>
-          <span class="mono">{{ project.stack }} </span>
+          <span class="mono font-weight-bold" style="font-size: 0.8em"
+            >{{ project.stack }}
+          </span>
           <p class="mt-3" style="text-align: justify; font-weight: 600">
             {{ project.description[$i18n.locale] }}
           </p>
-          <v-layout justify-end class="px-0">
+          <v-layout justify-end class="px-0" wrap>
+            <v-btn
+              v-if="project.thesis"
+              class="ml-2 mb-2 text-capitalize"
+              depressed
+              @click="openThesis"
+              color="grey lighten-4"
+            >
+              <span>{{ $t("thesis") }}</span>
+            </v-btn>
             <v-btn
               v-if="project.github.length != 0"
-              class="mr-2 text-capitalize"
+              class="ml-2 mb-2 text-capitalize"
               depressed
               @click="openWindow(project.github)"
               color="grey lighten-4"
@@ -273,7 +293,7 @@
             </v-btn>
             <v-btn
               v-if="project.app.length != 0"
-              class="text-capitalize"
+              class="ml-2 mb-2 text-capitalize"
               dark
               depressed
               @click="openWindow(project.app)"
@@ -337,7 +357,11 @@
       <v-footer
         color="secundary"
         class="pa-6 pt-12"
-        style="scroll-snap-align: start; z-index: 2"
+        :style="
+          $vuetify.breakpoint.mdAndUp
+            ? 'scroll-snap-align: start; z-index: 2'
+            : 'scroll-snap-align: start; z-index: 2; height: 100vh'
+        "
       >
         <v-layout justify-space-around class="px-0" wrap>
           <v-flex md5 xs12 sm12 class="mb-6">
@@ -383,6 +407,7 @@
             </v-btn>
           </v-flex>
         </v-layout>
+        <div style="height: 100%"></div>
       </v-footer>
     </div>
   </Layout>
@@ -415,7 +440,9 @@ let pickalook;
 let hover = false;
 export default {
   metaInfo() {
-    return {};
+    return {
+      title: "Portfolio",
+    };
   },
 
   methods: {
@@ -440,6 +467,9 @@ export default {
     },
     downloadResumeFullstack() {
       window.open("/AndriuGarcia-WebDeveloperResume.pdf");
+    },
+    openThesis() {
+      window.open("/thesis.pdf");
     },
     downloadResumeProductManager() {
       window.open("/ResumeAndriuGarcia-ProductManager.pdf");
@@ -486,6 +516,7 @@ export default {
             "Nuxt.js (Vue.js) · Express.js · Prisma.js · TypeScript · PostgreSQL · ElasticSearch",
           app: "https://olimaps.com",
           github: "https://github.com/andriugarcia/Olimaps-Frontend",
+          thesis: true,
         },
         {
           name: "Pantala",
@@ -500,6 +531,7 @@ export default {
             "Nuxt.js (Vue.js), GraphQL, MySQL, Firebase, CloudFlare, Stripe",
           app: "https://pantala.es",
           github: "",
+          thesis: false,
         },
       ],
     };
@@ -630,7 +662,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .home-links a {
   margin-right: 1rem;
 }
@@ -744,5 +776,42 @@ html {
 
 .mono {
   font-family: monospace;
+}
+
+$bg: #2d2d37; // Dark blue
+$primary: #fd6b21; // Orange
+
+body {
+  background: $bg;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.arrow {
+  text-align: center;
+  margin-bottom: -6px;
+}
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
 }
 </style>
