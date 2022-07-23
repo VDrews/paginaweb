@@ -77,33 +77,32 @@ module.exports = function (api) {
         content: node
       })
 
-      node = node.map(async (content) => {
+      let translatedNode = []
+
+      for (const nodecontent of node) {
         const { data } = await axios.post("https://api-free.deepl.com/v2/translate", null, {
           params: {
             auth_key: process.env.DEEPL_AUTH_KEY,
-            text: content.text,
+            text: nodecontent.text,
             target_lang: 'en'
           }
         })
 
-        // console.log(data);
-
-        return {
-          ...content,
+        translatedNode.push({
+          ...nodecontent,
           text: data.translations[0].text
-        }
-      })
-
-
-      Promise.all(node).then((translatedNode) => {
-        console.log("NODE: ", tweet.id);
-        threadCollection.addNode({
-          id: tweet.id + '_en',
-          title: tweet.title_en,
-          author: tweet.author,
-          locale: 'en',
-          content: translatedNode
         })
+
+      }
+
+
+      console.log(tweet.title, translatedNode[0].text)
+      threadCollection.addNode({
+        id: tweet.id + '_en',
+        title: tweet.title_en,
+        author: tweet.author,
+        locale: 'en',
+        content: translatedNode
       })
     }
 

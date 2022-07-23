@@ -320,7 +320,12 @@
                   rounded
                   color="primary"
                   style="height: 100%"
-                  @click="$router.push({ path: '/blog/' + edge.node.id })"
+                  @click="
+                    $router.push({
+                      path:
+                        `/${$i18n.locale.substring(0, 2)}/blog/` + edge.node.id,
+                    })
+                  "
                 >
                   <h3 class="my-1">{{ edge.node.title }}</h3>
                   <p>{{ edge.node.content[0].text | truncate }}</p>
@@ -359,7 +364,7 @@
         class="pa-6 pt-12"
         :style="
           $vuetify.breakpoint.mdAndUp
-            ? 'scroll-snap-align: start; z-index: 2'
+            ? 'scroll-snap-align: start; z-index: 2; height: auto'
             : 'scroll-snap-align: start; z-index: 2; height: 100vh'
         "
       >

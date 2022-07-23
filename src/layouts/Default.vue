@@ -82,10 +82,16 @@ export default {
   },
   methods: {
     switchToEnglish() {
-      window.location.href = window.location.href.replace("/es/", "/en/");
+      this.$router.replace({
+        path: this.$route.path.replaceAll("es", "en"),
+      });
+      // window.location.href = window.location.href.replaceAll("es", "en");
     },
     switchToSpanish() {
-      window.location.href = window.location.href.replace("/en/", "/es/");
+      this.$router.replace({
+        path: this.$route.path.replaceAll("en", "es"),
+      });
+      // window.location.href = window.location.href.replaceAll("en", "es");
     },
     openEmail() {
       window.open("mailto:contacto@andriugarcia.com");
@@ -107,7 +113,9 @@ export default {
     colorContrastEvent() {
       if (
         this.$route.name.startsWith("home") &&
-        document.getElementById("main").scrollTop + 20 < window.innerHeight
+        (document.getElementById("main").scrollTop + 20 < window.innerHeight ||
+          document.getElementById("main").scrollTop >
+            document.getElementById("main").scrollHeight - window.innerHeight)
       ) {
         this.colorContrast = "white";
       } else {

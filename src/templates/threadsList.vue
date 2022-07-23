@@ -78,6 +78,7 @@
       <v-layout
         style="position: fixed; bottom: 16px; left: 0; right: 0; width: 100%"
         justify-space-between
+        class="px-1"
       >
         <v-layout align-center>
           <v-icon>mdi-heart-outline</v-icon>
@@ -85,12 +86,7 @@
             {{ $page.threadsList.content[0].public_metrics.like_count }}
           </span>
         </v-layout>
-        <v-btn @click="share" rounded depressed large color="red lighten-5">
-          <span class="mr-2 secundary--text text-capitalize">{{
-            $t("share")
-          }}</span>
-          <v-icon color="secundary" size="32">mdi-share-variant</v-icon>
-        </v-btn>
+        <share-button></share-button>
       </v-layout>
     </div>
     <div v-else>
@@ -115,8 +111,13 @@
               <div v-if="i == 0" class="mb-4">
                 <h1>{{ $page.threadsList.title }}</h1>
                 <i>{{ $t("by") }} {{ $page.threadsList.author }} </i>
-                <v-layout justify-end>
-                  <v-layout justify-end align-center>
+                <v-layout
+                  justify-space-between
+                  align-centers
+                  class="px-0 py-3"
+                  style="width: 100%"
+                >
+                  <v-layout align-center class="px-0">
                     <v-icon>mdi-heart-outline</v-icon>
                     <span class="ml-2 mt-1">
                       {{
@@ -124,20 +125,7 @@
                       }}
                     </span>
                   </v-layout>
-                  <v-btn
-                    @click="share"
-                    rounded
-                    depressed
-                    large
-                    color="red lighten-5"
-                  >
-                    <span class="mr-2 secundary--text text-capitalize">{{
-                      $t("share")
-                    }}</span>
-                    <v-icon color="secundary" size="32"
-                      >mdi-share-variant</v-icon
-                    >
-                  </v-btn>
+                  <share-button></share-button>
                 </v-layout>
               </div>
               <p v-html="linkify(card.text)" style="font-size: 1.3em"></p>
@@ -175,7 +163,11 @@
               -webkit-box-shadow: 10px 10px 0px 0px #000000;
               box-shadow: 10px 10px 0px 0px #000000;
             "
-            @click="$router.push({ path: '/blog/' + edge.node.id })"
+            @click="
+              $router.push({
+                path: `/${$i18n.locale.substring(0, 2)}/blog/` + edge.node.id,
+              })
+            "
           >
             <h3 class="my-1">{{ edge.node.title }}</h3>
             <p>{{ edge.node.content[0].text }}</p>
@@ -224,7 +216,14 @@ query($id: ID!) {
 
 <script>
 import GamecardStack from "@/components/GamecardStack.vue";
+import ShareButton from "../components/ShareButton.vue";
 export default {
+  watch: {
+    $route(to, from) {
+      this.cards = [...this.$page.threadsList.content];
+      this.rerender++;
+    },
+  },
   computed: {
     posts() {
       console.log(this.$page.posts.edges);
@@ -250,6 +249,7 @@ export default {
   },
   components: {
     GamecardStack,
+    ShareButton,
   },
 
   mounted() {
