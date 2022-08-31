@@ -43,46 +43,45 @@ export default {
     },
   },
   methods: {
-    async share(channel = null) {
-      if (channel) {
-        switch (channel) {
-          case "whatsapp":
-            window.open(
-              "whatsapp://send?text=" +
-                this.$t("checkArticle") +
-                window.location.href
-            );
-            break;
-          case "facebook":
-            window.open(
-              "https://www.facebook.com/sharer/sharer.php?u=" +
-                window.location.href
-            );
-            break;
-          case "twitter":
-            window.open(
-              "https://twitter.com/intent/tweet?text=" +
-                this.$t("checkArticle") +
-                window.location.href
-            );
-            break;
-          case "linkedin":
-            window.open(
-              "https://www.linkedin.com/shareArticle?mini=true&url=" +
-                window.location.href
-            );
-            break;
-        }
-      } else {
-        try {
-          await navigator.share({
-            title: this.$page.threadsList.title,
-            text: "",
-            url: window.location.href,
-          });
-        } catch (err) {
-          console.error(err);
-        }
+    async share(channel) {
+      console.log(this.$t);
+      switch (channel) {
+        case "whatsapp":
+          window.open(
+            "whatsapp://send?text=" +
+              this.$t("checkArticle") +
+              window.location.href
+          );
+          break;
+        case "facebook":
+          window.open(
+            "https://www.facebook.com/sharer/sharer.php?u=" +
+              window.location.href
+          );
+          break;
+        case "twitter":
+          window.open(
+            "https://twitter.com/intent/tweet?text=" +
+              this.$t("checkArticle") +
+              window.location.href
+          );
+          break;
+        case "linkedin":
+          window.open(
+            "https://www.linkedin.com/shareArticle?mini=true&url=" +
+              window.location.href
+          );
+          break;
+        default:
+          try {
+            await navigator.share({
+              title: this.$page.threadsList.title,
+              text: "",
+              url: window.location.href,
+            });
+          } catch (err) {
+            console.error(err);
+          }
       }
     },
   },

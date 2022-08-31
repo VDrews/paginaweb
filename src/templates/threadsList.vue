@@ -78,7 +78,6 @@
       <v-layout
         style="position: fixed; bottom: 16px; left: 0; right: 0; width: 100%"
         justify-space-between
-        class="px-1"
       >
         <v-layout align-center>
           <v-icon>mdi-heart-outline</v-icon>

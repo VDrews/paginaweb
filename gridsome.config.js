@@ -8,6 +8,12 @@ module.exports = {
   siteName: 'Andriu Garcia',
   plugins: [
     {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: 'G-T8QKR4PPQ2'
+      }
+    },
+    {
       use: "gridsome-plugin-i18n",
       options: {
         locales: [ // locales list
